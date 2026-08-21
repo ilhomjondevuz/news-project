@@ -33,12 +33,8 @@ INSTALLED_APPS = [
     'hitcount',
 
     # local apps
-<<<<<<< HEAD
     'apps.accounts.apps.AccountsConfig',
-
-=======
     'apps.news.apps.NewsConfig',
->>>>>>> future/news_app
 ]
 
 MIDDLEWARE = [

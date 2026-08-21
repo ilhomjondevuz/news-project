@@ -1,21 +1,15 @@
-<<<<<<< HEAD
-from django.contrib import admin
-from django.urls import path, include
-
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('accounts/', include('apps.accounts.urls')),
-=======
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
 
+
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("apps.news.urls")),
->>>>>>> future/news_app
+    path("accounts/", include("apps.accounts.urls")),
 ]
+
 
 urlpatterns += static(
     settings.MEDIA_URL,
