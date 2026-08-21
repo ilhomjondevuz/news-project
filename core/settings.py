@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     # packages
 
     # local apps
+    'apps.accounts.apps.AccountsConfig',
 
 ]
 
@@ -69,23 +70,23 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': env.str('DATABASE_NAME'),
-        'USER': env.str('DATABASE_USER'),
-        'PASSWORD': env.str('DATABASE_PASSWORD'),
-        'HOST': env.str('DATABASE_HOST'),
-        'PORT': env.str('DATABASE_PORT'),
-    }
-}
-
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': env.str('DATABASE_NAME'),
+#         'USER': env.str('DATABASE_USER'),
+#         'PASSWORD': env.str('DATABASE_PASSWORD'),
+#         'HOST': env.str('DATABASE_HOST'),
+#         'PORT': env.str('DATABASE_PORT'),
 #     }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 
 # Password validation
@@ -139,3 +140,5 @@ STORAGES = {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
 }
+
+AUTH_USER_MODEL = 'accounts.User'
