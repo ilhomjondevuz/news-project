@@ -3,6 +3,8 @@ from django.utils import timezone
 from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 
+from .managers import PublishedManager
+
 
 class Newness(models.Model):
     class Status(models.TextChoices):
@@ -45,6 +47,9 @@ class Newness(models.Model):
         choices=Status.choices,
         default=Status.DRAFT,
     )
+
+    objects = models.Manager()  # default manager
+    published_objects = PublishedManager()
 
     def __str__(self):
         return self.title
