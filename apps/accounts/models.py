@@ -8,7 +8,13 @@ class User(AbstractUser):
         Admin = 'A', 'admin',
         Manager = 'M', 'manager',
 
+    class Gender(models.TextChoices):
+        Male = 'M', 'male',
+        Female = 'F', 'female',
+
     role = models.CharField(max_length=1, choices=Roles.choices, default=Roles.Ordinary)
+    gender = models.CharField(max_length=1, choices=Gender.choices, null=True, blank=True)
+    birthDate = models.DateField(null=True, blank=True)
 
     def __str__(self):
         return self.username
