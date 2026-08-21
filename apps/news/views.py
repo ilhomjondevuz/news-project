@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
+from hitcount.views import HitCountMixin
 
 from .forms import ContactForm
 from .models import Newness, Category
@@ -15,6 +16,12 @@ def news_detail_view(request, slug):
     newness = get_object_or_404(Newness, slug=slug)
     context = {'newness': newness}
     return render(request, 'news/news_detail.html', context)
+
+class NewsDetailView(generic.DetailView, HitCountMixin):
+    model = Newness
+    template_name = 'news/news_detail.html'
+    context_object_name = 'news'
+    count_hit = True
 
 # def contact_view(request):
 #     form = ContactForm(request.POST or None)
@@ -47,7 +54,7 @@ class ContactView(generic.TemplateView):
 
 class HomePageView(generic.ListView):
     template_name = 'home.html'
-    context_object_name = 'categories'
+    context_object_name = 'news'
 
     def get_queryset(self):
         return Newness.objects.all()

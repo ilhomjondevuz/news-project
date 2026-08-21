@@ -29,7 +29,7 @@
                                 {{ newness.content|truncatewords:20 }}
                             </p>
                             <div class="mt-auto">
-                                <a href="{% url 'news_detail' newness.slug %}"
+                                <a href="{{ newness.get_absolute_url }}"
                                    class="btn btn-outline-primary btn-sm">
                                     Read more →
                                 </a>
@@ -38,7 +38,7 @@
 
                         <div class="card-footer bg-light text-muted small d-flex justify-content-between">
                             <span>📅 {{ newness.published_at|date:"d M Y H:i" }}</span>
-                            <span>👁 {{ newness.views_count }}</span>
+                            <span>👁 {{ newness.hit_count_generic }}</span>
                         </div>
                     </div>
                 </div>

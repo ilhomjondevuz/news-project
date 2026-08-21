@@ -8,7 +8,7 @@
             {% for popular in popular_news %}
             <li class="list-group-item d-flex justify-content-between align-items-center">
                 <a href="{% url 'news_detail' popular.slug %}" class="text-decoration-none">
-                    {{ popular.title|truncatewords:8 }}
+                    {{ popular.title|truncatewords:2 }}
                 </a>
                 <span class="badge bg-secondary rounded-pill">
                     👁 {{ popular.views_count }}
@@ -31,7 +31,7 @@
             {% for latest in latest_news %}
             <li class="list-group-item">
                 <a href="{% url 'news_detail' latest.slug %}" class="text-decoration-none">
-                    {{ latest.title|truncatewords:8 }}
+                    {{ latest.title|truncatewords:2 }}
                 </a>
                 <br>
                 <small class="text-muted">📅 {{ latest.published_at|date:"d M Y" }}</small>

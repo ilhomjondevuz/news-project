@@ -1,7 +1,10 @@
+from django.contrib.contenttypes.fields import GenericRelation
 from django.db import models
+from django.urls import reverse
 from django.utils import timezone
 from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
+from hitcount.models import HitCount
 
 from .managers import PublishedManager
 
@@ -10,6 +13,13 @@ class Newness(models.Model):
     class Status(models.TextChoices):
         DRAFT = "DF", _("Draft")
         PUBLISHED = "PB", _("Published")
+
+    # hit count
+    hit_count_generic = GenericRelation(
+        HitCount,
+        object_id_field='object_pk',
+        related_query_name='hit_count_generic_relation'
+    )
 
     title = models.CharField(
         max_length=200,
@@ -66,6 +76,9 @@ class Newness(models.Model):
             self.slug = slugify(self.title)
         super(Newness, self).save(*args, **kwargs)
 
+    def get_absolute_url(self):
+        return reverse("news_detail", kwargs={"slug": self.slug})
+
 
 class Category(models.Model):
     title = models.CharField(
@@ -91,6 +104,9 @@ class Category(models.Model):
         if not self.slug:
             self.slug = slugify(self.title)
         super(Category, self).save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse("category_detail", kwargs={"slug": self.slug})
 
 class Contact(models.Model):
     name = models.CharField(max_length=50)

@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # packages
+    'hitcount',
 
     # local apps
     'apps.news.apps.NewsConfig',
