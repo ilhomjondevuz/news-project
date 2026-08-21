@@ -91,3 +91,17 @@ class Category(models.Model):
         if not self.slug:
             self.slug = slugify(self.title)
         super(Category, self).save(*args, **kwargs)
+
+class Contact(models.Model):
+    name = models.CharField(max_length=50)
+    email = models.EmailField(max_length=50)
+    message = models.TextField()
+
+    def __str__(self):
+        return self.name + " " + self.email
+
+    class Meta:
+        ordering = ["-email"]
+        db_table = "contacts"
+        verbose_name = _("Contact ")
+        verbose_name_plural = _("Contacts")

@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import reverse
 from django.utils.html import format_html
 
-from .models import Newness, Category
+from .models import Newness, Category, Contact
 
 
 @admin.register(Newness)
@@ -22,3 +22,8 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display = ("title", )
     search_fields = ("title",)
     exclude = ("slug",)
+
+@admin.register(Contact)
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email')
+    search_fields = ('name', 'email', 'message')
