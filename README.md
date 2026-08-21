@@ -1,4 +1,4 @@
-# Django 6.1 Project
+# News Django Web Site
 
 A modern Django 6.1 web application built with Python, Django REST Framework, PostgreSQL, and environment-based configuration.
 
