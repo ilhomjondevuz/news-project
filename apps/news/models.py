@@ -17,6 +17,7 @@ class Newness(models.Model):
     slug = models.SlugField(
         max_length=200,
         unique=True,
+        primary_key=True,
     )
     content = models.TextField()
 
@@ -61,7 +62,8 @@ class Newness(models.Model):
         verbose_name_plural = _("News")
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.title)
+        if not self.slug:
+            self.slug = slugify(self.title)
         super(Newness, self).save(*args, **kwargs)
 
 
@@ -73,6 +75,7 @@ class Category(models.Model):
     slug = models.SlugField(
         max_length=200,
         unique=True,
+        primary_key=True,
     )
 
     def __str__(self):
@@ -85,5 +88,6 @@ class Category(models.Model):
         verbose_name_plural = _("Categories")
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.title)
+        if not self.slug:
+            self.slug = slugify(self.title)
         super(Category, self).save(*args, **kwargs)
