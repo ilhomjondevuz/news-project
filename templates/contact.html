@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}📞 Biz bilan bog‘lanish{% endblock title %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4 fw-bold text-primary">
+        📞 Biz bilan bog‘lanish
+    </h2>
+
+    <div class="row">
+        <!-- Aloqa ma'lumotlari -->
+        <div class="col-lg-5 mb-4">
+            <div class="card shadow-sm border-0">
+                <div class="card-body">
+                    <h5 class="fw-bold">📍 Manzil</h5>
+                    <p>Toshkent shahri, Yunusobod tumani</p>
+
+                    <h5 class="fw-bold">📧 Email</h5>
+                    <p><a href="mailto:info@newssite.uz">info@newssite.uz</a></p>
+
+                    <h5 class="fw-bold">📞 Telefon</h5>
+                    <p><a href="tel:+998901234567">+998 90 123 45 67</a></p>
+
+                    <h5 class="fw-bold">🌐 Ijtimoiy tarmoqlar</h5>
+                    <p>
+                        <a href="https://facebook.com/your_page" class="me-2">Facebook</a> |
+                        <a href="https://instagram.com/your_page" class="me-2">Instagram</a> |
+                        <a href="https://t.me/your_channel" class="me-2">Telegram</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Xabar yuborish formasi -->
+        <div class="col-lg-7">
+            <div class="card shadow-sm border-0">
+                <div class="card-body">
+                    <h5 class="fw-bold mb-3">✍️ Xabar yuboring</h5>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Ismingiz</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email manzilingiz</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Xabaringiz</label>
+                            <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            📤 Yuborish
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

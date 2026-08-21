@@ -12,3 +12,9 @@ def news_detail_view(request, slug):
     newness = get_object_or_404(Newness, slug=slug)
     context = {'newness': newness}
     return render(request, 'news/news_detail.html', context)
+
+def contact_view(request):
+    context = {
+
+    }
+    return render(request, 'contact.html', context=context)
