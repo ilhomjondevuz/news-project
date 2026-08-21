@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}🏠 Homepage{% endblock title %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <!-- News -->
+        <div class="col-lg-8">
+            <h2 class="mb-4 fw-bold text-primary text-center">
+                📰 Latest News
+            </h2>
+            <div class="row">
+                {% for newness in news %}
+                <div class="col-md-6 mb-4">
+                    <div class="card shadow-sm h-100 border-0">
+                        {% if newness.photo %}
+                        <img src="{{ newness.photo.url }}"
+                             class="card-img-top img-fluid rounded-top"
+                             alt="{{ newness.title }}"
+                             style="height:220px; object-fit:cover;">
+                        {% endif %}
+
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title text-primary fw-bold">
+                                {{ newness.title }}
+                            </h5>
+                            <p class="card-text text-muted">
+                                {{ newness.content|truncatewords:20 }}
+                            </p>
+                            <div class="mt-auto">
+                                <a href="{% url 'news_detail' newness.slug %}"
+                                   class="btn btn-outline-primary btn-sm">
+                                    Read more →
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="card-footer bg-light text-muted small d-flex justify-content-between">
+                            <span>📅 {{ newness.published_at|date:"d M Y H:i" }}</span>
+                            <span>👁 {{ newness.views_count }}</span>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="col-12 text-center text-muted">
+                    No news available yet.
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

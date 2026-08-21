@@ -13,7 +13,7 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
     <div class="container">
-        <a class="navbar-brand fw-bold" href="{% url 'news:news_list' %}">
+        <a class="navbar-brand fw-bold" href="{% url 'home' %}">
             📰 NewsSite
         </a>
         <button class="navbar-toggler" type="button"
@@ -27,24 +27,24 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="">Yangiliklar</a>
+                    <a class="nav-link" href="{% url 'home' %}">News</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'news:contact' %}">Aloqa</a>
+                    <a class="nav-link" href="{% url 'contact' %}">Contact</a>
                 </li>
                 {% if user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link" href="">Profil</a>
+                    <a class="nav-link" href="">Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Chiqish</a>
+                    <a class="nav-link" href="">Logout</a>
                 </li>
                 {% else %}
                 <li class="nav-item">
-                    <a class="nav-link" href="">Kirish</a>
+                    <a class="nav-link" href="">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Ro‘yxatdan o‘tish</a>
+                    <a class="nav-link" href="">Register</a>
                 </li>
                 {% endif %}
             </ul>
@@ -63,11 +63,41 @@
 </div>
 {% endif %}
 
-
 <!-- Main content -->
 <main class="flex-grow-1 py-4">
     <div class="container">
-        {% block content %}{% endblock content %}
+        <div class="row">
+            <!-- Main content -->
+            <div class="col-lg-8">
+                {% block content %}{% endblock content %}
+            </div>
+
+            <!-- Categories sidebar -->
+            <div class="col-lg-4">
+                <div class="card shadow-sm border-0 mb-4">
+                    <div class="card-header bg-success text-white fw-bold">
+                        📂 Categories
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        {% for category in categories %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a href="{% url 'category_detail' category.slug %}"
+                               class="text-decoration-none">
+                                {{ category.title }}
+                            </a>
+                            <span class="badge bg-primary rounded-pill">
+                                {{ category.news.count }}
+                            </span>
+                        </li>
+                        {% empty %}
+                        <li class="list-group-item text-muted text-center">
+                            No categories available
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 </main>
 
@@ -75,7 +105,7 @@
 <footer class="bg-dark text-white text-center py-3 mt-auto">
     <div class="container">
         {% block footer %}
-        <p class="mb-0">© {{ year }} NewsSite. Barcha huquqlar himoyalangan.</p>
+        <p class="mb-0">© {{ year }} NewsSite. All rights reserved.</p>
         {% endblock footer %}
     </div>
 </footer>

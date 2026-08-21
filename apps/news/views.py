@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 
 from .forms import ContactForm
-from .models import Newness
+from .models import Newness, Category
 
 
 def news_list_view(request):
@@ -40,7 +40,27 @@ class ContactView(generic.TemplateView):
         if form.is_valid():
             form.save()
             messages.success(request, "✅ Xabaringiz muvaffaqiyatli yuborildi!")
-            return redirect('news:contact')
+            return redirect('contact')
         else:
             messages.error(request, "❌ Xabar yuborishda xatolik yuz berdi.")
         return render(request, self.template_name, {'form': form})
+
+class HomePageView(generic.ListView):
+    template_name = 'home.html'
+    context_object_name = 'categories'
+
+    def get_queryset(self):
+        return Newness.objects.all()
+
+class CategoryDetailView(generic.DetailView):
+    model = Category
+    template_name = 'news/category_detail.html'
+    context_object_name = 'category'
+
+    def get_context_data(self, **kwargs):
+        context = super(CategoryDetailView, self).get_context_data(**kwargs)
+        category = Category.objects.filter(slug=self.kwargs['slug']).first()
+        news = Newness.published_objects.filter(category=category)
+        context['news'] = news
+        context['category'] = category
+        return context

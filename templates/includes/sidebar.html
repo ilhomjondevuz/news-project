@@ -1,67 +1,67 @@
-<!--<div class="sidebar">-->
-<!--    &lt;!&ndash; Eng ko‘p o‘qilgan yangiliklar &ndash;&gt;-->
-<!--    <div class="card mb-4 shadow-sm">-->
-<!--        <div class="card-header bg-primary text-white fw-bold">-->
-<!--            👑 Eng ko‘p o‘qilganlar-->
-<!--        </div>-->
-<!--        <ul class="list-group list-group-flush">-->
-<!--            {% for popular in popular_news %}-->
-<!--            <li class="list-group-item d-flex justify-content-between align-items-center">-->
-<!--                <a href="{% url 'news_detail' popular.slug %}" class="text-decoration-none">-->
-<!--                    {{ popular.title|truncatewords:8 }}-->
-<!--                </a>-->
-<!--                <span class="badge bg-secondary rounded-pill">-->
-<!--                    👁 {{ popular.views_count }}-->
-<!--                </span>-->
-<!--            </li>-->
-<!--            {% empty %}-->
-<!--            <li class="list-group-item text-muted text-center">-->
-<!--                Hozircha ma’lumot yo‘q-->
-<!--            </li>-->
-<!--            {% endfor %}-->
-<!--        </ul>-->
-<!--    </div>-->
+<div class="sidebar">
+    <!-- Most viewed news -->
+    <div class="card mb-4 shadow-sm">
+        <div class="card-header bg-primary text-white fw-bold">
+            👑 Most Viewed
+        </div>
+        <ul class="list-group list-group-flush">
+            {% for popular in popular_news %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <a href="{% url 'news_detail' popular.slug %}" class="text-decoration-none">
+                    {{ popular.title|truncatewords:8 }}
+                </a>
+                <span class="badge bg-secondary rounded-pill">
+                    👁 {{ popular.views_count }}
+                </span>
+            </li>
+            {% empty %}
+            <li class="list-group-item text-muted text-center">
+                No data available
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
 
-<!--    &lt;!&ndash; So‘nggi yangiliklar &ndash;&gt;-->
-<!--    <div class="card mb-4 shadow-sm">-->
-<!--        <div class="card-header bg-success text-white fw-bold">-->
-<!--            🆕 So‘nggi yangiliklar-->
-<!--        </div>-->
-<!--        <ul class="list-group list-group-flush">-->
-<!--            {% for latest in latest_news %}-->
-<!--            <li class="list-group-item">-->
-<!--                <a href="{% url 'news_detail' latest.slug %}" class="text-decoration-none">-->
-<!--                    {{ latest.title|truncatewords:8 }}-->
-<!--                </a>-->
-<!--                <br>-->
-<!--                <small class="text-muted">📅 {{ latest.published_at|date:"d M Y" }}</small>-->
-<!--            </li>-->
-<!--            {% empty %}-->
-<!--            <li class="list-group-item text-muted text-center">-->
-<!--                Yangiliklar mavjud emas-->
-<!--            </li>-->
-<!--            {% endfor %}-->
-<!--        </ul>-->
-<!--    </div>-->
+    <!-- Latest news -->
+    <div class="card mb-4 shadow-sm">
+        <div class="card-header bg-success text-white fw-bold">
+            🆕 Latest News
+        </div>
+        <ul class="list-group list-group-flush">
+            {% for latest in latest_news %}
+            <li class="list-group-item">
+                <a href="{% url 'news_detail' latest.slug %}" class="text-decoration-none">
+                    {{ latest.title|truncatewords:8 }}
+                </a>
+                <br>
+                <small class="text-muted">📅 {{ latest.published_at|date:"d M Y" }}</small>
+            </li>
+            {% empty %}
+            <li class="list-group-item text-muted text-center">
+                No news available
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
 
-<!--    &lt;!&ndash; Ijtimoiy tarmoqlar &ndash;&gt;-->
-<!--    <div class="card shadow-sm">-->
-<!--        <div class="card-header bg-dark text-white fw-bold">-->
-<!--            🌐 Bizni kuzating-->
-<!--        </div>-->
-<!--        <div class="card-body text-center">-->
-<!--            <a href="https://facebook.com/your_page" class="btn btn-outline-primary btn-sm me-2">-->
-<!--                <i class="fab fa-facebook-f"></i> Facebook-->
-<!--            </a>-->
-<!--            <a href="https://instagram.com/your_page" class="btn btn-outline-danger btn-sm me-2">-->
-<!--                <i class="fab fa-instagram"></i> Instagram-->
-<!--            </a>-->
-<!--            <a href="https://t.me/your_channel" class="btn btn-outline-info btn-sm me-2">-->
-<!--                <i class="fab fa-telegram"></i> Telegram-->
-<!--            </a>-->
-<!--            <a href="https://youtube.com/@your_channel" class="btn btn-outline-danger btn-sm">-->
-<!--                <i class="fab fa-youtube"></i> YouTube-->
-<!--            </a>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
+    <!-- Social media -->
+    <div class="card shadow-sm">
+        <div class="card-header bg-dark text-white fw-bold">
+            🌐 Follow Us
+        </div>
+        <div class="card-body text-center">
+            <a href="https://facebook.com/your_page" class="btn btn-outline-primary btn-sm me-2">
+                <i class="fab fa-facebook-f"></i> Facebook
+            </a>
+            <a href="https://instagram.com/your_page" class="btn btn-outline-danger btn-sm me-2">
+                <i class="fab fa-instagram"></i> Instagram
+            </a>
+            <a href="https://t.me/your_channel" class="btn btn-outline-info btn-sm me-2">
+                <i class="fab fa-telegram"></i> Telegram
+            </a>
+            <a href="https://youtube.com/@your_channel" class="btn btn-outline-danger btn-sm">
+                <i class="fab fa-youtube"></i> YouTube
+            </a>
+        </div>
+    </div>
+</div>
