@@ -30,10 +30,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # packages
+    'hitcount',
 
     # local apps
+<<<<<<< HEAD
     'apps.accounts.apps.AccountsConfig',
 
+=======
+    'apps.news.apps.NewsConfig',
+>>>>>>> future/news_app
 ]
 
 MIDDLEWARE = [
@@ -59,6 +64,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'core.context_processor.categories_context_processor'
             ],
         },
     },
@@ -129,13 +135,17 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
 STATICFILES_FINDERS = [
-    'django.contrib.staticfiles.finders.FileSystemFinder',
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 ]
 
 MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = '/media/'
 
 STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
