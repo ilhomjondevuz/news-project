@@ -148,3 +148,7 @@ STORAGES = {
 }
 
 AUTH_USER_MODEL = 'accounts.User'
+
+AUTHENTICATION_BACKENDS = [
+    'apps.accounts.authentication.EmailOrUsernameBackend',
+]

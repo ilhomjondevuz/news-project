@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 
 
 class User(AbstractUser):
@@ -12,9 +13,10 @@ class User(AbstractUser):
         Male = 'M', 'male',
         Female = 'F', 'female',
 
-    role = models.CharField(max_length=1, choices=Roles.choices, default=Roles.Ordinary)
-    gender = models.CharField(max_length=1, choices=Gender.choices, null=True, blank=True)
-    birthDate = models.DateField(null=True, blank=True)
+    email = models.EmailField(verbose_name=_("Email"), max_length=254, unique=True)
+    role = models.CharField(max_length=1, choices=Roles.choices, default=Roles.Ordinary, verbose_name=_("Role"))
+    gender = models.CharField(max_length=1, choices=Gender.choices, null=True, blank=True, verbose_name=_("Gender"))
+    birthDate = models.DateField(null=True, blank=True, verbose_name=_("Birth Date"))
 
     def __str__(self):
         return self.username
