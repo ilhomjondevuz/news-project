@@ -15,11 +15,10 @@ class Newness(models.Model):
         PUBLISHED = "PB", _("Published")
 
     # hit count
-    hit_count_generic = GenericRelation(
-        HitCount,
-        object_id_field='object_pk',
-        related_query_name='hit_count_generic_relation'
-    )
+    # hitcount = GenericRelation(
+    #     HitCount,
+    #     related_query_name='newness',
+    # )
 
     title = models.CharField(
         max_length=200,

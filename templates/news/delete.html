@@ -32,7 +32,7 @@
                     </p>
 
                     <h5 class="fw-semibold mb-4">
-                        "{{ newness.title }}"
+                        {{ newness.title }}
                     </h5>
 
                     <div class="alert alert-warning text-start">
@@ -45,7 +45,7 @@
                         {% csrf_token %}
 
                         <a
-                            href="{% url 'news_detail' news.slug %}"
+                            href="{% url 'news_detail' newness.slug %}"
                             class="btn btn-outline-secondary px-4"
                         >
 
