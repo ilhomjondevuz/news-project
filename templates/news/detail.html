@@ -220,5 +220,16 @@
         </a>
     </div>
 {% endif %}
+{% if user.is_authenticated %}
+    <div class="mt-4">
+        <a
+            href="{% url 'newsness_delete' newness.slug %}"
+            class="btn btn-danger px-4 py-2 fw-semibold"
+        >
+            <i class="bi bi-pencil-square me-1"></i>
+            Delete News
+        </a>
+    </div>
+{% endif %}
 
 {% endblock content %}

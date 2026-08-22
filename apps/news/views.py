@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import render, get_object_or_404, redirect
+from django.urls import reverse_lazy
 from django.views import generic
 from hitcount.views import HitCountMixin
 
@@ -23,6 +24,16 @@ class NewnessDetailView(generic.DetailView):
     model = Newness
     template_name = 'news/detail.html'
     context_object_name = 'newness'
+
+class NewnessDeleteView(generic.DeleteView, LoginRequiredMixin, UserPassesTestMixin):
+    model = Newness
+    template_name = 'news/delete.html'
+    context_object_name = 'news'
+
+    def test_func(self):
+        return self.request.user == self.get_object().author
+
+    success_url = reverse_lazy('home')
 
 
 # def contact_view(request):
