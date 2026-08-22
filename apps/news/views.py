@@ -1,9 +1,10 @@
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import render, get_object_or_404, redirect
+from django.urls import reverse_lazy
 from django.views import generic
-from hitcount.views import HitCountMixin
 
-from .forms import ContactForm
+from .forms import ContactForm, NewnessForm
 from .models import Newness, Category
 
 
@@ -13,26 +14,41 @@ def news_list_view(request):
     return render(request, 'news/news_list.html', context)
 
 def news_detail_view(request, slug):
-    newness = get_object_or_404(Newness, slug=slug)
+    newness = get_object_or_404(Newness.published_objects.all(), slug=slug)
     context = {'newness': newness}
-    return render(request, 'news/news_detail.html', context)
+    return render(request, 'news/detail.html', context)
 
-class NewsDetailView(generic.DetailView, HitCountMixin):
+
+class NewnessDeleteView(
+    LoginRequiredMixin,
+    UserPassesTestMixin,
+    generic.DeleteView
+):
     model = Newness
-    template_name = 'news/news_detail.html'
-    context_object_name = 'news'
-    count_hit = True
+    template_name = 'news/delete.html'
+    context_object_name = 'newness'
 
-# def contact_view(request):
-#     form = ContactForm(request.POST or None)
-#     context = {
-#         'form': form
-#     }
-#     if request.method == 'POST':
-#         if form.is_valid():
-#             form.save()
-#             return redirect('news:contact')
-#     return render(request, 'partials/contact_form.html', context=context)
+    slug_field = 'slug'
+    slug_url_kwarg = 'slug'
+
+    def test_func(self):
+        return self.request.user.is_staff
+
+    def form_valid(self, form):
+        self.object = self.get_object()
+        self.object.delete()
+        return redirect('home')
+
+
+class NewsCreateView(LoginRequiredMixin, UserPassesTestMixin, generic.CreateView):
+    model = Newness
+    form_class = NewnessForm
+    template_name = 'news/news_create.html'
+    context_object_name = 'newness'
+
+    def test_func(self):
+        return self.request.user.is_staff
+
 
 class ContactView(generic.TemplateView):
     template_name = 'partials/contact_form.html'
@@ -57,7 +73,7 @@ class HomePageView(generic.ListView):
     context_object_name = 'news'
 
     def get_queryset(self):
-        return Newness.objects.all()
+        return Newness.published_objects.all()
 
 class CategoryDetailView(generic.DetailView):
     model = Category
@@ -71,3 +87,12 @@ class CategoryDetailView(generic.DetailView):
         context['news'] = news
         context['category'] = category
         return context
+
+class NewsUpdateView(generic.UpdateView, LoginRequiredMixin, UserPassesTestMixin):
+    model = Newness
+    template_name = 'news/news_update.html'
+    context_object_name = 'news'
+    form_class = NewnessForm
+
+    def test_func(self):
+        return self.request.user.is_authenticated

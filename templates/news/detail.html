@@ -1,0 +1,235 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ newness.title }}{% endblock title %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-9">
+
+            <!-- News Card -->
+            <article class="card border-0 shadow-sm">
+
+                {% if newness.photo %}
+                    <img
+                        src="{{ newness.photo.url }}"
+                        class="card-img-top"
+                        alt="{{ newness.title }}"
+                        style="
+                            height: 450px;
+                            object-fit: cover;
+                        "
+                    >
+                {% endif %}
+
+                <div class="card-body p-4 p-lg-5">
+
+                    <!-- Category -->
+                    {% if newness.category %}
+                        <a
+                            href="{% url 'category_detail' newness.category.slug %}"
+                            class="badge bg-primary text-decoration-none mb-3"
+                        >
+                            {{ newness.category.title }}
+                        </a>
+                    {% endif %}
+
+                    <!-- Title -->
+                    <h1 class="fw-bold mb-3">
+                        {{ newness.title }}
+                    </h1>
+
+                    <!-- Meta -->
+                    <div class="d-flex flex-wrap gap-3 text-muted mb-4">
+
+                        <span>
+                            <i class="bi bi-calendar3"></i>
+                            {{ newness.published_at|date:"d M, Y" }}
+                        </span>
+
+                        {% if newness.hitcount %}
+                            <span>
+                                <i class="bi bi-eye"></i>
+                                {{ newness.hitcount.hits }}
+                            </span>
+                        {% endif %}
+
+                    </div>
+
+                    <hr>
+
+                    <!-- Content -->
+                    <div class="news-content fs-5 lh-lg">
+                        {{ newness.content|safe }}
+                    </div>
+
+                </div>
+            </article>
+
+
+            <!-- Comments -->
+            <div class="card border-0 shadow-sm mt-4">
+
+                <div class="card-body p-4">
+
+                    <h3 class="fw-bold mb-4">
+                        Comments
+                    </h3>
+
+
+                    {% for comment in comments %}
+
+                        <div class="d-flex gap-3 mb-4">
+
+                            <!-- Avatar -->
+                            <div>
+                                <div
+                                    class="rounded-circle bg-primary text-white
+                                           d-flex align-items-center justify-content-center"
+                                    style="
+                                        width: 45px;
+                                        height: 45px;
+                                    "
+                                >
+                                    {{ comment.author.username|first|upper }}
+                                </div>
+                            </div>
+
+
+                            <!-- Comment -->
+                            <div class="flex-grow-1">
+
+                                <div class="d-flex justify-content-between">
+
+                                    <strong>
+                                        {{ comment.author.username }}
+                                    </strong>
+
+                                    <small class="text-muted">
+                                        {{ comment.created_at|date:"d M, Y H:i" }}
+                                    </small>
+
+                                </div>
+
+                                <p class="mt-2 mb-0 text-muted">
+                                    {{ comment.text }}
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        {% if not forloop.last %}
+                            <hr>
+                        {% endif %}
+
+                    {% empty %}
+
+                        <div class="text-center py-4">
+
+                            <div class="fs-1">
+                                💬
+                            </div>
+
+                            <p class="text-muted mb-0">
+                                No comments yet.
+                            </p>
+
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+            </div>
+
+
+            <!-- Add Comment -->
+            <div class="card border-0 shadow-sm mt-4">
+
+                <div class="card-body p-4">
+
+                    <h3 class="fw-bold mb-4">
+                        Leave a comment
+                    </h3>
+
+                    {% if user.is_authenticated %}
+
+                        <form method="post">
+
+                            {% csrf_token %}
+
+                            <div class="mb-3">
+
+                                {{ comment_form.text }}
+
+                                {% if comment_form.text.errors %}
+                                    <div class="text-danger mt-2">
+                                        {{ comment_form.text.errors }}
+                                    </div>
+                                {% endif %}
+
+                            </div>
+
+                            <button
+                                type="submit"
+                                class="btn btn-primary px-4"
+                            >
+                                <i class="bi bi-send"></i>
+                                Comment
+                            </button>
+
+                        </form>
+
+                    {% else %}
+
+                        <div class="alert alert-light border">
+
+                            You need to
+                            <a
+                                href="{% url 'login' %}"
+                                class="fw-bold"
+                            >
+                                login
+                            </a>
+                            to leave a comment.
+
+                        </div>
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+{% if user.is_authenticated and user.is_staff or user.is_superuser %}
+    <div class="mt-4">
+        <a
+            href="{% url 'newsness_update' newness.slug %}"
+            class="btn btn-warning px-4 py-2 fw-semibold"
+        >
+            <i class="bi bi-pencil-square me-1"></i>
+            Update News
+        </a>
+    </div>
+{% endif %}
+{% if user.is_authenticated %}
+    <div class="mt-4">
+        <a
+            href="{% url 'newsness_delete' newness.slug %}"
+            class="btn btn-danger px-4 py-2 fw-semibold"
+        >
+            <i class="bi bi-pencil-square me-1"></i>
+            Delete News
+        </a>
+    </div>
+{% endif %}
+
+{% endblock content %}
