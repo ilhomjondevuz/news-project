@@ -209,5 +209,16 @@
     </div>
 
 </div>
+{% if user.is_authenticated and user.is_staff or user.is_superuser %}
+    <div class="mt-4">
+        <a
+            href="{% url 'newsness_update' newness.slug %}"
+            class="btn btn-warning px-4 py-2 fw-semibold"
+        >
+            <i class="bi bi-pencil-square me-1"></i>
+            Update News
+        </a>
+    </div>
+{% endif %}
 
 {% endblock content %}
