@@ -152,3 +152,5 @@ AUTH_USER_MODEL = 'accounts.User'
 AUTHENTICATION_BACKENDS = [
     'apps.accounts.authentication.EmailOrUsernameBackend',
 ]
+
+LOGIN_REDIRECT_URL = 'home'
