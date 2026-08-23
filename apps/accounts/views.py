@@ -9,7 +9,7 @@ from django.views import generic
 from django.views.generic import CreateView
 from django.utils.translation import gettext_lazy as _
 
-from .forms import LoginForm, UserForm
+from .forms import LoginForm, UserForm, UserChangeForm
 
 User = get_user_model()
 
@@ -63,6 +63,16 @@ class UserProfileView(LoginRequiredMixin, generic.DetailView):
     form_class = UserForm
     template_name = 'accounts/profile.html'
     context_object_name = 'user'
+
+    def get_object(self, *args, **kwargs):
+        return self.request.user
+
+class UserUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = User
+    form_class = UserChangeForm
+    template_name = 'accounts/profile_update.html'
+    context_object_name = 'user'
+    success_url = reverse_lazy('profile')
 
     def get_object(self, *args, **kwargs):
         return self.request.user

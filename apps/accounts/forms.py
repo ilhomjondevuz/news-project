@@ -71,6 +71,60 @@ class UserForm(UserCreationForm):
             'password2': _('Confirm password'),
         }
 
+class UserChangeForm(forms.ModelForm):
+
+    class Meta:
+        model = User
+        fields = [
+            'email',
+            'first_name',
+            'last_name',
+            'gender',
+            'birthDate',
+        ]
+
+        widgets = {
+            'email': forms.EmailInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Enter your email',
+                }
+            ),
+            'first_name': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Enter your first name',
+                }
+            ),
+            'last_name': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Enter your last name',
+                }
+            ),
+            'gender': forms.Select(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Select your gender',
+                }
+            ),
+            'birthDate': forms.DateInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Enter your birth date',
+                    'type': 'date',
+                }
+            )
+        }
+
+        labels = {
+            'email': _('Email'),
+            'first_name': _('First Name'),
+            'last_name': _('Last Name'),
+            'gender': _('Gender'),
+            'birthDate': _('Birth Date'),
+        }
+
 class LoginForm(forms.Form):
     username = forms.CharField(
         max_length=150,
