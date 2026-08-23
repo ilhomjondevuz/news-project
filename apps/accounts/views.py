@@ -1,7 +1,8 @@
 from django.contrib import messages
 from django.contrib.auth import get_user_model, authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView, \
+    PasswordResetView
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
@@ -26,6 +27,10 @@ class RegisterView(CreateView):
 class CustomLoginView(LoginView):
     template_name = 'registration/login.html'
     success_url = reverse_lazy('home')
+
+    def get_success_url(self):
+        messages.success(self.request, _('Login successful.'))
+        return reverse_lazy('home')
 
 def custom_login_view(request):
     if request.method == 'POST':
@@ -76,3 +81,10 @@ class UserUpdateView(LoginRequiredMixin, generic.UpdateView):
 
     def get_object(self, *args, **kwargs):
         return self.request.user
+
+class CustomPasswordChangeView(PasswordChangeView):
+    template_name = 'accounts/password_change.html'
+    success_url = reverse_lazy('password_change_done')
+
+class customPasswordChangeDoneView(PasswordChangeDoneView):
+    template_name = 'accounts/password_change_done.html'
