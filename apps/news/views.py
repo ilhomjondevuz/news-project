@@ -114,7 +114,6 @@ class HomePageView(generic.ListView):
         for newness in context['news']:
             count = HitCount.objects.get_for_object(newness)
             context['hit_count'] = count
-            print(count)
 
         return context
 

@@ -1,4 +1,5 @@
 from pathlib import Path
+from django.utils.translation import gettext_lazy as _
 
 from environs import Env
 
@@ -42,6 +43,7 @@ MIDDLEWARE = [
     "whitenoise.middleware.WhiteNoiseMiddleware",  # whitenoise
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    "django.middleware.locale.LocaleMiddleware",  # locale middleware
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -113,13 +115,21 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/6.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'Asia/Tashkent'
 
 USE_I18N = True
 
 USE_TZ = True
+
+USE_L10N = True
+
+LANGUAGES = [
+    ('en', _('English')),
+    ('ru', _('Russian')),
+    ('uz', _('Uzbek')),
+]
 
 
 # Static files (CSS, JavaScript, Images)
