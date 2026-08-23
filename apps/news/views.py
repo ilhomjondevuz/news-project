@@ -1,8 +1,9 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import render, get_object_or_404, redirect
-from django.urls import reverse_lazy
 from django.views import generic
+from hitcount.models import HitCount
+from hitcount.views import HitCountDetailView
 
 from .forms import ContactForm, NewnessForm
 from .models import Newness, Category
@@ -14,9 +15,41 @@ def news_list_view(request):
     return render(request, 'news/news_list.html', context)
 
 def news_detail_view(request, slug):
-    newness = get_object_or_404(Newness.published_objects.all(), slug=slug)
-    context = {'newness': newness}
+    newness = get_object_or_404(
+        Newness.published_objects.all(),
+        slug=slug
+    )
+
+    hitcount = HitCount.objects.get_for_object(newness)
+
+    context = {
+        'newness': newness,
+        'hitcount': hitcount.hits,
+    }
+
     return render(request, 'news/detail.html', context)
+
+class NewsHitDetailView(HitCountDetailView):
+    model = Newness
+    template_name = 'news/detail.html'
+    context_object_name = 'newness'
+    count_hit = True
+
+    def get(self, request, *args, **kwargs):
+        hitcount = HitCount.objects.get_for_object(self.get_object())
+        hitcount += 1
+        return self.render_to_response(self.get_context_data())
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(
+            Newness.published_objects.all(),
+            slug=self.kwargs['slug']
+        )
+
+    def get_context_data(self, **kwargs):
+        context = super(NewsHitDetailView, self).get_context_data(**kwargs)
+        context['hitcount'] = HitCount.objects.get_for_object(self.get_object())
+        return context
 
 
 class NewnessDeleteView(
@@ -74,6 +107,16 @@ class HomePageView(generic.ListView):
 
     def get_queryset(self):
         return Newness.published_objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        for newness in context['news']:
+            count = HitCount.objects.get_for_object(newness)
+            context['hit_count'] = count
+            print(count)
+
+        return context
 
 class CategoryDetailView(generic.DetailView):
     model = Category
