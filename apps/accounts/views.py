@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth import get_user_model, authenticate, login, logout
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, LogoutView
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
@@ -46,3 +46,12 @@ def custom_login_view(request):
 def custom_logout_view(request):
     logout(request)
     return HttpResponseRedirect(reverse_lazy('login'))
+
+class CustomLogoutView(LogoutView):
+    template_name = 'registration/logout.html'
+    success_url = reverse_lazy('home')
+    http_method_names = ['get', 'post']
+
+    # def get(self, request, *args, **kwargs):
+    #     logout(request)
+    #     return super(CustomLogoutView, self).get(request, *args, **kwargs)
