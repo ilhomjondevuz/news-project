@@ -15,15 +15,29 @@
                 <div class="bg-primary text-white p-4">
                     <div class="d-flex align-items-center">
 
-                        <!-- Avatar -->
-                        <div
-                            class="bg-white text-primary rounded-circle
-                                   d-flex align-items-center justify-content-center
-                                   me-3 fw-bold fs-2"
-                            style="width: 75px; height: 75px;"
-                        >
-                            {{ user.first_name|first|default:user.username|first|upper }}
-                        </div>
+                        <!-- Current Avatar -->
+                        {% if user.avatar %}
+                            <img
+                                src="{{ user.avatar.url }}"
+                                alt="{{ user.username }}"
+                                width="85"
+                                height="85"
+                                class="rounded-circle object-fit-cover me-3"
+                            >
+                        {% else %}
+                            <div
+                                class="bg-white text-primary rounded-circle
+                                       d-flex align-items-center justify-content-center
+                                       fw-bold fs-2 me-3"
+                                style="width: 85px; height: 85px;"
+                            >
+                                {% if user.first_name %}
+                                    {{ user.first_name|first|upper }}
+                                {% else %}
+                                    {{ user.username|first|upper }}
+                                {% endif %}
+                            </div>
+                        {% endif %}
 
                         <div>
                             <h3 class="fw-bold mb-1">
@@ -38,10 +52,13 @@
                     </div>
                 </div>
 
-                <!-- Form -->
                 <div class="card-body p-4 p-md-5">
 
-                    <form method="post" novalidate>
+                    <form
+                        method="post"
+                        enctype="multipart/form-data"
+                        novalidate
+                    >
 
                         {% csrf_token %}
 
@@ -66,13 +83,11 @@
 
                                 {{ form.email }}
 
-                                {% if form.email.errors %}
+                                {% for error in form.email.errors %}
                                     <div class="text-danger small mt-1">
-                                        {% for error in form.email.errors %}
-                                            <div>{{ error }}</div>
-                                        {% endfor %}
+                                        {{ error }}
                                     </div>
-                                {% endif %}
+                                {% endfor %}
                             </div>
 
                             <!-- First Name -->
@@ -86,13 +101,11 @@
 
                                 {{ form.first_name }}
 
-                                {% if form.first_name.errors %}
+                                {% for error in form.first_name.errors %}
                                     <div class="text-danger small mt-1">
-                                        {% for error in form.first_name.errors %}
-                                            <div>{{ error }}</div>
-                                        {% endfor %}
+                                        {{ error }}
                                     </div>
-                                {% endif %}
+                                {% endfor %}
                             </div>
 
                             <!-- Last Name -->
@@ -106,13 +119,11 @@
 
                                 {{ form.last_name }}
 
-                                {% if form.last_name.errors %}
+                                {% for error in form.last_name.errors %}
                                     <div class="text-danger small mt-1">
-                                        {% for error in form.last_name.errors %}
-                                            <div>{{ error }}</div>
-                                        {% endfor %}
+                                        {{ error }}
                                     </div>
-                                {% endif %}
+                                {% endfor %}
                             </div>
 
                             <!-- Gender -->
@@ -126,13 +137,11 @@
 
                                 {{ form.gender }}
 
-                                {% if form.gender.errors %}
+                                {% for error in form.gender.errors %}
                                     <div class="text-danger small mt-1">
-                                        {% for error in form.gender.errors %}
-                                            <div>{{ error }}</div>
-                                        {% endfor %}
+                                        {{ error }}
                                     </div>
-                                {% endif %}
+                                {% endfor %}
                             </div>
 
                             <!-- Birth Date -->
@@ -146,19 +155,39 @@
 
                                 {{ form.birthDate }}
 
-                                {% if form.birthDate.errors %}
+                                {% for error in form.birthDate.errors %}
                                     <div class="text-danger small mt-1">
-                                        {% for error in form.birthDate.errors %}
-                                            <div>{{ error }}</div>
-                                        {% endfor %}
+                                        {{ error }}
                                     </div>
-                                {% endif %}
+                                {% endfor %}
+                            </div>
+
+                            <!-- Avatar -->
+                            <div class="col-12">
+                                <label
+                                    for="{{ form.avatar.id_for_label }}"
+                                    class="form-label fw-semibold"
+                                >
+                                    {{ form.avatar.label }}
+                                </label>
+
+                                {{ form.avatar }}
+
+                                <div class="form-text">
+                                    Upload a new profile picture.
+                                </div>
+
+                                {% for error in form.avatar.errors %}
+                                    <div class="text-danger small mt-1">
+                                        {{ error }}
+                                    </div>
+                                {% endfor %}
                             </div>
 
                         </div>
 
                         <!-- Buttons -->
-                        <div class="d-flex justify-content-between align-items-center mt-4">
+                        <div class="d-flex justify-content-between mt-4">
 
                             <a
                                 href="{% url 'profile' %}"

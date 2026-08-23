@@ -17,6 +17,7 @@ class User(AbstractUser):
     role = models.CharField(max_length=1, choices=Roles.choices, default=Roles.Ordinary, verbose_name=_("Role"))
     gender = models.CharField(max_length=1, choices=Gender.choices, null=True, blank=True, verbose_name=_("Gender"))
     birthDate = models.DateField(null=True, blank=True, verbose_name=_("Birth Date"))
+    avatar = models.ImageField(null=True, blank=True, verbose_name=_("Avatar"))
 
     def __str__(self):
         return self.username
