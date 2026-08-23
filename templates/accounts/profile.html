@@ -1,0 +1,216 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Profile{% endblock title %}
+
+{% block content %}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10 col-lg-8">
+
+            <!-- Profile Card -->
+            <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+
+                <!-- Header -->
+                <div class="bg-primary text-white p-4">
+                    <div class="d-flex align-items-center">
+
+                        <!-- Avatar -->
+                        <div
+                            class="bg-white text-primary rounded-circle
+                                   d-flex align-items-center justify-content-center
+                                   me-3 fw-bold fs-2"
+                            style="width: 80px; height: 80px;"
+                        >
+                            {{ user.first_name|first|default:user.username|first|upper }}
+                        </div>
+
+                        <div>
+                            <h3 class="mb-1 fw-bold">
+                                {{ user.get_full_name|default:user.username }}
+                            </h3>
+
+                            <p class="mb-0 opacity-75">
+                                @{{ user.username }}
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- User Information -->
+                <div class="card-body p-4 p-md-5">
+
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <div>
+                            <h4 class="fw-bold mb-1">
+                                User Information
+                            </h4>
+
+                            <p class="text-muted mb-0">
+                                Your personal account information
+                            </p>
+                        </div>
+
+                        <a
+                            href="#"
+                            class="btn btn-outline-primary rounded-3"
+                        >
+                            <i class="bi bi-pencil me-1"></i>
+                            Edit
+                        </a>
+                    </div>
+
+                    <div class="row g-3">
+
+                        <!-- Username -->
+                        <div class="col-md-6">
+                            <div class="bg-light rounded-3 p-3 h-100">
+                                <small class="text-muted d-block mb-1">
+                                    Username
+                                </small>
+
+                                <span class="fw-semibold">
+                                    {{ user.username }}
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="col-md-6">
+                            <div class="bg-light rounded-3 p-3 h-100">
+                                <small class="text-muted d-block mb-1">
+                                    Email
+                                </small>
+
+                                <span class="fw-semibold">
+                                    {{ user.email|default:"Not provided" }}
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- First Name -->
+                        <div class="col-md-6">
+                            <div class="bg-light rounded-3 p-3 h-100">
+                                <small class="text-muted d-block mb-1">
+                                    First Name
+                                </small>
+
+                                <span class="fw-semibold">
+                                    {{ user.first_name|default:"Not provided" }}
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Last Name -->
+                        <div class="col-md-6">
+                            <div class="bg-light rounded-3 p-3 h-100">
+                                <small class="text-muted d-block mb-1">
+                                    Last Name
+                                </small>
+
+                                <span class="fw-semibold">
+                                    {{ user.last_name|default:"Not provided" }}
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Gender -->
+                        <div class="col-md-6">
+                            <div class="bg-light rounded-3 p-3 h-100">
+                                <small class="text-muted d-block mb-1">
+                                    Gender
+                                </small>
+
+                                <span class="fw-semibold">
+                                    {{ user.get_gender_display|default:"Not provided" }}
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Birth Date -->
+                        <div class="col-md-6">
+                            <div class="bg-light rounded-3 p-3 h-100">
+                                <small class="text-muted d-block mb-1">
+                                    Birth Date
+                                </small>
+
+                                <span class="fw-semibold">
+                                    {{ user.birthDate|default:"Not provided" }}
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Account Information -->
+                    <hr class="my-4">
+
+                    <h5 class="fw-bold mb-3">
+                        Account Information
+                    </h5>
+
+                    <div class="row g-3">
+
+                        <!-- Date Joined -->
+                        <div class="col-md-6">
+                            <div class="bg-light rounded-3 p-3">
+                                <small class="text-muted d-block mb-1">
+                                    Joined
+                                </small>
+
+                                <span class="fw-semibold">
+                                    {{ user.date_joined|date:"F d, Y" }}
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Last Login -->
+                        <div class="col-md-6">
+                            <div class="bg-light rounded-3 p-3">
+                                <small class="text-muted d-block mb-1">
+                                    Last Login
+                                </small>
+
+                                <span class="fw-semibold">
+                                    {% if user.last_login %}
+                                        {{ user.last_login|date:"F d, Y H:i" }}
+                                    {% else %}
+                                        Never
+                                    {% endif %}
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="d-flex flex-wrap gap-2 mt-4">
+
+                        <a
+                            href=""
+                            class="btn btn-outline-primary rounded-3"
+                        >
+                            <i class="bi bi-shield-lock me-1"></i>
+                            Change Password
+                        </a>
+
+                        <a
+                            href="{% url 'home' %}"
+                            class="btn btn-outline-secondary rounded-3"
+                        >
+                            <i class="bi bi-house me-1"></i>
+                            Home
+                        </a>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

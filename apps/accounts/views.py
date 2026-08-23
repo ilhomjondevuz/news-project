@@ -1,19 +1,20 @@
 from django.contrib import messages
 from django.contrib.auth import get_user_model, authenticate, login, logout
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, FormView
+from django.views import generic
+from django.views.generic import CreateView
 from django.utils.translation import gettext_lazy as _
 
-from .forms import RegisterForm, LoginForm
-
+from .forms import LoginForm, UserForm
 
 User = get_user_model()
 
 class RegisterView(CreateView):
-    form_class = RegisterForm
+    form_class = UserForm
     template_name = 'registration/signup.html'
     success_url = reverse_lazy('login')
 
@@ -56,3 +57,12 @@ class CustomLogoutView(LogoutView):
     template_name = 'registration/logout.html'
     success_url = reverse_lazy('home')
     http_method_names = ['get', 'post']
+
+class UserProfileView(LoginRequiredMixin, generic.DetailView):
+    model = User
+    form_class = UserForm
+    template_name = 'accounts/profile.html'
+    context_object_name = 'user'
+
+    def get_object(self, *args, **kwargs):
+        return self.request.user
