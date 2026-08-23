@@ -1,63 +1,75 @@
-import re
-
 from django import forms
-from django.contrib.auth import authenticate
+from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.forms import UserCreationForm
 
 from .models import User
 
 
 class RegisterForm(UserCreationForm):
-    email = forms.EmailField(
-        required=True,
-        widget=forms.EmailInput(
-            attrs={
-                'placeholder': 'Enter your email',
-                'class': 'form-control',
-            }
-        )
-    )
-
-    gender = forms.ChoiceField(
-        choices=User.Gender.choices,
-        required=False,
-        widget=forms.Select(
-            attrs={
-                'class': 'form-control',
-            }
-        )
-    )
-
-    birthDate = forms.DateField(
-        required=False,
-        widget=forms.DateInput(
-            attrs={
-                'type': 'date',
-                'class': 'form-control',
-            }
-        )
-    )
 
     class Meta:
         model = User
-        fields = (
+        fields = [
             'username',
-            # 'email',
+            'email',
+            'first_name',
+            'last_name',
             'gender',
             'birthDate',
             'password1',
             'password2',
-        )
+        ]
 
-    def clean_email(self):
-        email = self.cleaned_data['email'].lower()
-
-        if User.objects.filter(email=email).exists():
-            raise forms.ValidationError(
-                "This email is already registered."
+        widgets = {
+            'username': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Enter your username',
+                }
+            ),
+            'email': forms.EmailInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Enter your email',
+                }
+            ),
+            'first_name': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Enter your first name',
+                }
+            ),
+            'last_name': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Enter your last name',
+                }
+            ),
+            'gender': forms.Select(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Select your gender',
+                }
+            ),
+            'birthDate': forms.DateInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Enter your birth date',
+                    'type': 'date',
+                }
             )
+        }
 
-        return email
+        labels = {
+            'username': _('Username'),
+            'email': _('Email'),
+            'first_name': _('First Name'),
+            'last_name': _('Last Name'),
+            'gender': _('Gender'),
+            'birthDate': _('Birth Date'),
+            'password1': _('Password'),
+            'password2': _('Confirm password'),
+        }
 
 class LoginForm(forms.Form):
     username = forms.CharField(

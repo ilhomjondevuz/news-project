@@ -17,6 +17,11 @@ class RegisterView(CreateView):
     template_name = 'registration/signup.html'
     success_url = reverse_lazy('login')
 
+    def form_valid(self, form):
+        response = super(RegisterView, self).form_valid(form)
+        messages.success(self.request, _('Registration successful.'))
+        return response
+
 class CustomLoginView(LoginView):
     template_name = 'registration/login.html'
     success_url = reverse_lazy('home')
@@ -51,7 +56,3 @@ class CustomLogoutView(LogoutView):
     template_name = 'registration/logout.html'
     success_url = reverse_lazy('home')
     http_method_names = ['get', 'post']
-
-    # def get(self, request, *args, **kwargs):
-    #     logout(request)
-    #     return super(CustomLogoutView, self).get(request, *args, **kwargs)
