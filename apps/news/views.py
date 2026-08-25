@@ -3,6 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views import generic
+from hitcount.views import HitCountDetailView
 
 from .forms import ContactForm, NewnessForm
 from .models import Newness, Category
@@ -17,6 +18,13 @@ def news_detail_view(request, slug):
     newness = get_object_or_404(Newness.published_objects.all(), slug=slug)
     context = {'newness': newness}
     return render(request, 'news/detail.html', context)
+
+
+class NewnessCountHitDetailView(HitCountDetailView):
+    model = Newness
+    count_hit = True
+    template_name = 'news/detail.html'
+    context_object_name = 'newness'
 
 
 class NewnessDeleteView(
@@ -68,6 +76,7 @@ class ContactView(generic.TemplateView):
             messages.error(request, "❌ Xabar yuborishda xatolik yuz berdi.")
         return render(request, self.template_name, {'form': form})
 
+
 class HomePageView(generic.ListView):
     template_name = 'home.html'
     context_object_name = 'news'
@@ -87,6 +96,7 @@ class CategoryDetailView(generic.DetailView):
         context['news'] = news
         context['category'] = category
         return context
+
 
 class NewsUpdateView(generic.UpdateView, LoginRequiredMixin, UserPassesTestMixin):
     model = Newness
