@@ -1,8 +1,6 @@
 from django.contrib import admin
-from django.urls import reverse
-from django.utils.html import format_html
 
-from .models import Newness, Category, Contact
+from .models import Newness, Category, Contact, Comment
 
 
 @admin.register(Newness)
@@ -27,3 +25,8 @@ class CategoryAdmin(admin.ModelAdmin):
 class ContactAdmin(admin.ModelAdmin):
     list_display = ('name', 'email')
     search_fields = ('name', 'email', 'message')
+
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ('author', 'news', 'content')
+    search_fields = ('author', 'news', 'content')
