@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Newness, Category, Contact, Comment
+from .models import Newness, Category, Contact
 
 
 @admin.register(Newness)
@@ -26,7 +26,7 @@ class ContactAdmin(admin.ModelAdmin):
     list_display = ('name', 'email')
     search_fields = ('name', 'email', 'message')
 
-@admin.register(Comment)
-class CommentAdmin(admin.ModelAdmin):
-    list_display = ('author', 'news', 'content')
-    search_fields = ('author', 'news', 'content')
+# @admin.register(Comment)
+# class CommentAdmin(admin.ModelAdmin):
+#     list_display = ('author', 'news', 'content')
+#     search_fields = ('author', 'news', 'content')
