@@ -5,10 +5,18 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import User
 
 
-class RegisterForm(UserCreationForm):
+from django import forms
+from django.contrib.auth.forms import UserCreationForm
+from django.utils.translation import gettext_lazy as _
+
+from .models import User
+
+
+class UserForm(UserCreationForm):
 
     class Meta:
         model = User
+
         fields = [
             'username',
             'email',
@@ -16,6 +24,7 @@ class RegisterForm(UserCreationForm):
             'last_name',
             'gender',
             'birthDate',
+            'avatar',
             'password1',
             'password2',
         ]
@@ -47,17 +56,21 @@ class RegisterForm(UserCreationForm):
             ),
             'gender': forms.Select(
                 attrs={
-                    'class': 'form-control',
-                    'placeholder': 'Select your gender',
+                    'class': 'form-select',
                 }
             ),
             'birthDate': forms.DateInput(
                 attrs={
                     'class': 'form-control',
-                    'placeholder': 'Enter your birth date',
                     'type': 'date',
                 }
-            )
+            ),
+            'avatar': forms.FileInput(
+                attrs={
+                    'class': 'form-control',
+                    'accept': 'image/*',
+                }
+            ),
         }
 
         labels = {
@@ -67,8 +80,71 @@ class RegisterForm(UserCreationForm):
             'last_name': _('Last Name'),
             'gender': _('Gender'),
             'birthDate': _('Birth Date'),
+            'avatar': _('Avatar'),
             'password1': _('Password'),
             'password2': _('Confirm password'),
+        }
+
+
+class UserChangeForm(forms.ModelForm):
+
+    class Meta:
+        model = User
+
+        fields = [
+            'email',
+            'first_name',
+            'last_name',
+            'gender',
+            'birthDate',
+            'avatar',
+        ]
+
+        widgets = {
+            'email': forms.EmailInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Enter your email',
+                }
+            ),
+            'first_name': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Enter your first name',
+                }
+            ),
+            'last_name': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Enter your last name',
+                }
+            ),
+            'gender': forms.Select(
+                attrs={
+                    'class': 'form-select',
+                }
+            ),
+            'birthDate': forms.DateInput(
+                attrs={
+                    'class': 'form-control',
+                    'type': 'date',
+                }
+            ),
+            'avatar': forms.FileInput(
+                attrs={
+                    'class': 'form-control',
+                    'accept': 'image/*',
+                }
+            ),
+        }
+
+        labels = {
+            'email': _('Email'),
+            'first_name': _('First Name'),
+            'last_name': _('Last Name'),
+            'gender': _('Gender'),
+            'birthDate': _('Birth Date'),
+            'avatar': _('Avatar'),
         }
 
 class LoginForm(forms.Form):

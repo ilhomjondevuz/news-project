@@ -1,11 +1,11 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import render, get_object_or_404, redirect
-from django.urls import reverse
+from django.urls import reverse_lazy
 from django.views import generic
 
-from .forms import ContactForm, NewnessForm, CommentForm
-from .models import Newness, Category, Comment
+from .forms import ContactForm, NewnessForm
+from .models import Newness, Category
 
 
 def news_list_view(request):
@@ -87,3 +87,12 @@ class CategoryDetailView(generic.DetailView):
         context['news'] = news
         context['category'] = category
         return context
+
+class NewsUpdateView(generic.UpdateView, LoginRequiredMixin, UserPassesTestMixin):
+    model = Newness
+    template_name = 'news/news_update.html'
+    context_object_name = 'news'
+    form_class = NewnessForm
+
+    def test_func(self):
+        return self.request.user.is_authenticated

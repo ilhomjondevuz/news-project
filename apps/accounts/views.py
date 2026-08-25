@@ -1,19 +1,21 @@
 from django.contrib import messages
 from django.contrib.auth import get_user_model, authenticate, login, logout
-from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView, \
+    PasswordResetView
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, FormView
+from django.views import generic
+from django.views.generic import CreateView
 from django.utils.translation import gettext_lazy as _
 
-from .forms import RegisterForm, LoginForm
-
+from .forms import LoginForm, UserForm, UserChangeForm
 
 User = get_user_model()
 
 class RegisterView(CreateView):
-    form_class = RegisterForm
+    form_class = UserForm
     template_name = 'registration/signup.html'
     success_url = reverse_lazy('login')
 
@@ -25,6 +27,10 @@ class RegisterView(CreateView):
 class CustomLoginView(LoginView):
     template_name = 'registration/login.html'
     success_url = reverse_lazy('home')
+
+    def get_success_url(self):
+        messages.success(self.request, _('Login successful.'))
+        return reverse_lazy('home')
 
 def custom_login_view(request):
     if request.method == 'POST':
@@ -56,3 +62,29 @@ class CustomLogoutView(LogoutView):
     template_name = 'registration/logout.html'
     success_url = reverse_lazy('home')
     http_method_names = ['get', 'post']
+
+class UserProfileView(LoginRequiredMixin, generic.DetailView):
+    model = User
+    form_class = UserForm
+    template_name = 'accounts/profile.html'
+    context_object_name = 'user'
+
+    def get_object(self, *args, **kwargs):
+        return self.request.user
+
+class UserUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = User
+    form_class = UserChangeForm
+    template_name = 'accounts/profile_update.html'
+    context_object_name = 'user'
+    success_url = reverse_lazy('profile')
+
+    def get_object(self, *args, **kwargs):
+        return self.request.user
+
+class CustomPasswordChangeView(PasswordChangeView):
+    template_name = 'accounts/password_change.html'
+    success_url = reverse_lazy('password_change_done')
+
+class customPasswordChangeDoneView(PasswordChangeDoneView):
+    template_name = 'accounts/password_change_done.html'
