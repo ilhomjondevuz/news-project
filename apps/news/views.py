@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
-from hitcount.models import HitCount
+from hitcount.models import HitCount, HitCountMixin
 from hitcount.views import HitCountDetailView
 
 from .forms import ContactForm, NewnessForm
@@ -14,20 +14,35 @@ def news_list_view(request):
     context = {'news': news}
     return render(request, 'news/news_list.html', context)
 
+class NewnessCountHitDetailView(HitCountDetailView):
+    model = Newness
+    count_hit = True
+    template_name = 'news/detail.html'
+    context_object_name = 'newness'
+
 def news_detail_view(request, slug):
     newness = get_object_or_404(
         Newness.published_objects.all(),
         slug=slug
     )
 
-    hitcount = HitCount.objects.get_for_object(newness)
+    hit_count = HitCount.objects.get_for_object(newness)
+    hit_count.hits += 1
+    hit_count.save(update_fields=['hits'])
 
     context = {
         'newness': newness,
-        'hitcount': hitcount.hits,
+        'hitcount': {
+            'pk': hit_count.pk,
+            'total_hits': hit_count.hits,
+        },
     }
 
-    return render(request, 'news/detail.html', context)
+    return render(
+        request,
+        'news/detail.html',
+        context
+    )
 
 class NewsHitDetailView(HitCountDetailView):
     model = Newness

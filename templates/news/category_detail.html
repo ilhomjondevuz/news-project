@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load hitcount_tags %}
 
 {% block title %}📂 {{ category.title }}{% endblock title %}
 
@@ -52,7 +53,7 @@
                             </span>
 
                             <span>
-                                👁 {{ newness.hit_count_generic }}
+                                👁 {% get_hit_count for newness %}
                             </span>
                         </div>
                     </div>

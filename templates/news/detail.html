@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load hitcount_tags %}
 
 {% block title %}{{ newness.title }}{% endblock title %}
 
@@ -52,15 +53,8 @@
                         </span>
 
                         <span>
-                            👁 {{ hitcount }}
+                            👁 {% get_hit_count for newness %}
                         </span>
-
-                        {% if newness.hitcount %}
-                            <span>
-                                <i class="bi bi-eye"></i>
-                                {{ newness.hitcount.hits }}
-                            </span>
-                        {% endif %}
 
                     </div>
 
