@@ -1,10 +1,8 @@
-from django.contrib.contenttypes.fields import GenericRelation
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
 from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
-from hitcount.models import HitCount
 
 from .managers import PublishedManager
 
@@ -13,11 +11,6 @@ class Newness(models.Model):
     class Status(models.TextChoices):
         DRAFT = "DF", _("Draft")
         PUBLISHED = "PB", _("Published")
-
-    hitcount = GenericRelation(
-        HitCount,
-        related_query_name='newness',
-    )
     title = models.CharField(
         max_length=200,
     )

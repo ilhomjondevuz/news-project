@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block title %}{{ newness.title }}{% endblock title %}
 
@@ -50,7 +51,9 @@
                             {{ newness.published_at|date:"d M, Y" }}
                         </span>
 
-                        <span>👁 {{ hitcount }}</span>
+                        <span>
+                            👁 {{ hitcount }}
+                        </span>
 
                         {% if newness.hitcount %}
                             <span>
@@ -78,7 +81,7 @@
                 <div class="card-body p-4">
 
                     <h3 class="fw-bold mb-4">
-                        Comments
+                        {% translate "Comments" %}
                     </h3>
 
 
@@ -137,7 +140,7 @@
                             </div>
 
                             <p class="text-muted mb-0">
-                                No comments yet.
+                                {% translate "No comments yet." %}
                             </p>
 
                         </div>
@@ -154,7 +157,7 @@
                 <div class="card-body p-4">
 
                     <h3 class="fw-bold mb-4">
-                        Leave a comment
+                        {% translate "Leave a comment" %}
                     </h3>
 
                     {% if user.is_authenticated %}
@@ -180,7 +183,7 @@
                                 class="btn btn-primary px-4"
                             >
                                 <i class="bi bi-send"></i>
-                                Comment
+                                {% translate "Comment" %}
                             </button>
 
                         </form>
@@ -189,14 +192,16 @@
 
                         <div class="alert alert-light border">
 
-                            You need to
+                            {% translate "You need to" %}
+
                             <a
                                 href="{% url 'login' %}"
                                 class="fw-bold"
                             >
-                                login
+                                {% translate "login" %}
                             </a>
-                            to leave a comment.
+
+                            {% translate "to leave a comment." %}
 
                         </div>
 
@@ -211,6 +216,8 @@
     </div>
 
 </div>
+
+
 {% if user.is_authenticated and user.is_staff or user.is_superuser %}
     <div class="mt-4">
         <a
@@ -218,18 +225,20 @@
             class="btn btn-warning px-4 py-2 fw-semibold"
         >
             <i class="bi bi-pencil-square me-1"></i>
-            Update News
+            {% translate "Update News" %}
         </a>
     </div>
 {% endif %}
+
+
 {% if user.is_authenticated %}
     <div class="mt-4">
         <a
             href="{% url 'newsness_delete' newness.slug %}"
             class="btn btn-danger px-4 py-2 fw-semibold"
         >
-            <i class="bi bi-pencil-square me-1"></i>
-            Delete News
+            <i class="bi bi-trash3 me-1"></i>
+            {% translate "Delete News" %}
         </a>
     </div>
 {% endif %}

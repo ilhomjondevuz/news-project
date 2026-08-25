@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # packages
+    'modeltranslation',
     'hitcount',
 
     # local apps
@@ -117,6 +118,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en'
 
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
+
 TIME_ZONE = 'Asia/Tashkent'
 
 USE_I18N = True
@@ -129,6 +132,10 @@ LANGUAGES = [
     ('en', _('English')),
     ('ru', _('Russian')),
     ('uz', _('Uzbek')),
+]
+
+LOCALE_PATHS = [
+    BASE_DIR / 'locale'
 ]
 
 

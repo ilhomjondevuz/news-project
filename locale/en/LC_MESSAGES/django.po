@@ -1,0 +1,460 @@
+# English translations
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: NewsDjangoWebsite\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-25 12:06+0500\n"
+"PO-Revision-Date: 2026-08-25 12:08+0500\n"
+"Last-Translator: Ilhomjon\n"
+"Language-Team: English\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps/accounts/forms.py:77 templates/accounts/profile.html:77
+#: templates/registration/login.html:38
+msgid "Username"
+msgstr "Username"
+
+#: apps/accounts/forms.py:78 apps/accounts/forms.py:142
+#: apps/accounts/models.py:16 templates/accounts/profile.html:90
+#: templates/partials/contact_form.html:28
+msgid "Email"
+msgstr "Email"
+
+#: apps/accounts/forms.py:79 apps/accounts/forms.py:143
+#: templates/accounts/profile.html:103
+msgid "First Name"
+msgstr "First Name"
+
+#: apps/accounts/forms.py:80 apps/accounts/forms.py:144
+#: templates/accounts/profile.html:116
+msgid "Last Name"
+msgstr "Last Name"
+
+#: apps/accounts/forms.py:81 apps/accounts/forms.py:145
+#: apps/accounts/models.py:18 templates/accounts/profile.html:129
+msgid "Gender"
+msgstr "Gender"
+
+#: apps/accounts/forms.py:82 apps/accounts/forms.py:146
+#: apps/accounts/models.py:19 templates/accounts/profile.html:146
+msgid "Birth Date"
+msgstr "Birth Date"
+
+#: apps/accounts/forms.py:83 apps/accounts/forms.py:147
+#: apps/accounts/models.py:20
+msgid "Avatar"
+msgstr "Avatar"
+
+#: apps/accounts/forms.py:84 templates/registration/login.html:58
+msgid "Password"
+msgstr "Password"
+
+#: apps/accounts/forms.py:85
+msgid "Confirm password"
+msgstr "Confirm password"
+
+#: apps/accounts/models.py:17
+msgid "Role"
+msgstr "Role"
+
+#: apps/accounts/views.py:24
+msgid "Registration successful."
+msgstr "Registration successful."
+
+#: apps/accounts/views.py:32
+msgid "Login successful."
+msgstr "Login successful."
+
+#: apps/accounts/views.py:43
+msgid "Username or password is incorrect."
+msgstr "Username or password is incorrect."
+
+#: apps/accounts/views.py:45
+msgid "Your account is inactive."
+msgstr "Your account is inactive."
+
+#: apps/accounts/views.py:51
+msgid "Please correct the error below."
+msgstr "Please correct the error below."
+
+#: apps/news/models.py:12
+msgid "Draft"
+msgstr "Draft"
+
+#: apps/news/models.py:13
+msgid "Published"
+msgstr "Published"
+
+#: apps/news/models.py:60 apps/news/models.py:61 templates/base.html:180
+msgid "News"
+msgstr "News"
+
+#: apps/news/models.py:89
+msgid "Category"
+msgstr "Category"
+
+#: apps/news/models.py:90 templates/base.html:196 templates/base.html:399
+msgid "Categories"
+msgstr "Categories"
+
+#: apps/news/models.py:111
+msgid "Contact "
+msgstr "Contact"
+
+#: apps/news/models.py:112
+msgid "Contacts"
+msgstr "Contacts"
+
+#: core/settings.py:132 templates/base.html:73 templates/base.html:118
+msgid "English"
+msgstr "English"
+
+#: core/settings.py:133
+msgid "Russian"
+msgstr "Russian"
+
+#: core/settings.py:134
+msgid "Uzbek"
+msgstr "Uzbek"
+
+#: templates/accounts/password_change.html:4
+#: templates/accounts/password_change.html:16
+#: templates/accounts/password_change.html:83
+#: templates/accounts/profile.html:218
+msgid "Change Password"
+msgstr "Change Password"
+
+#: templates/accounts/password_change.html:33
+msgid "Current password"
+msgstr "Current password"
+
+#: templates/accounts/password_change.html:50
+msgid "New password"
+msgstr "New password"
+
+#: templates/accounts/password_change.html:67
+msgid "Confirm new password"
+msgstr "Confirm new password"
+
+#: templates/accounts/password_change_done.html:4
+msgid "Password Changed"
+msgstr "Password Changed"
+
+#: templates/accounts/password_change_done.html:22
+msgid "Password Changed Successfully"
+msgstr "Password Changed Successfully"
+
+#: templates/accounts/password_change_done.html:26
+msgid "Your password has been changed successfully."
+msgstr "Your password has been changed successfully."
+
+#: templates/accounts/password_change_done.html:33
+msgid "Back to Home"
+msgstr "Back to Home"
+
+#: templates/accounts/profile.html:5
+msgid "Profile"
+msgstr "Profile"
+
+#: templates/accounts/profile.html:62
+msgid "User Information"
+msgstr "User Information"
+
+#: templates/accounts/profile.html:66
+msgid "Your personal account information"
+msgstr "Your personal account information"
+
+#: templates/accounts/profile.html:136 templates/accounts/profile.html:153
+msgid "Not provided"
+msgstr "Not provided"
+
+#: templates/accounts/profile.html:165
+msgid "Account Information"
+msgstr "Account Information"
+
+#: templates/accounts/profile.html:174
+msgid "Joined"
+msgstr "Joined"
+
+#: templates/accounts/profile.html:187
+msgid "Last Login"
+msgstr "Last Login"
+
+#: templates/accounts/profile.html:194
+msgid "Never"
+msgstr "Never"
+
+#: templates/accounts/profile.html:210 templates/accounts/profile_update.html:5
+#: templates/accounts/profile_update.html:45
+msgid "Edit Profile"
+msgstr "Edit Profile"
+
+#: templates/accounts/profile_update.html:49
+msgid "Update your personal information"
+msgstr "Update your personal information"
+
+#: templates/accounts/profile_update.html:178
+msgid "Upload a new profile picture."
+msgstr "Upload a new profile picture."
+
+#: templates/accounts/profile_update.html:198 templates/news/delete.html:53
+#: templates/news/news_create.html:88 templates/news/news_update.html:76
+#: templates/registration/logged_out.html:53
+#: templates/registration/logout.html:53
+msgid "Cancel"
+msgstr "Cancel"
+
+#: templates/accounts/profile_update.html:206
+msgid "Save Changes"
+msgstr "Save Changes"
+
+#: templates/base.html:11 templates/home.html:5
+msgid "Homepage"
+msgstr "Homepage"
+
+#: templates/base.html:68 templates/base.html:100
+msgid "O‘zbekcha"
+msgstr "Uzbek"
+
+#: templates/base.html:78 templates/base.html:136
+msgid "Русский"
+msgstr "Russian"
+
+#: templates/base.html:159
+msgid "Toggle navigation"
+msgstr "Toggle navigation"
+
+#: templates/base.html:226
+msgid "No categories"
+msgstr "No categories"
+
+#: templates/base.html:246
+msgid "Contact"
+msgstr "Contact"
+
+#: templates/base.html:277
+msgid "News create"
+msgstr "Create News"
+
+#: templates/base.html:291 templates/registration/logged_out.html:4
+#: templates/registration/logged_out.html:45
+#: templates/registration/logout.html:4 templates/registration/logout.html:45
+msgid "Logout"
+msgstr "Logout"
+
+#: templates/base.html:308 templates/registration/login.html:5
+#: templates/registration/login.html:18 templates/registration/login.html:76
+#: templates/registration/signup.html:236
+msgid "Login"
+msgstr "Login"
+
+#: templates/base.html:322 templates/registration/login.html:84
+msgid "Register"
+msgstr "Register"
+
+#: templates/base.html:357
+msgid "Close"
+msgstr "Close"
+
+#: templates/base.html:434
+msgid "No categories available"
+msgstr "No categories available"
+
+#: templates/base.html:464
+msgid "All rights reserved."
+msgstr "All rights reserved."
+
+#: templates/home.html:13 templates/includes/sidebar.html:40
+msgid "Latest News"
+msgstr "Latest News"
+
+#: templates/home.html:40 templates/news/category_detail.html:44
+msgid "Read more"
+msgstr "Read more"
+
+#: templates/home.html:59
+msgid "No news available yet."
+msgstr "No news available yet."
+
+#: templates/includes/sidebar.html:8
+msgid "Most Viewed"
+msgstr "Most Viewed"
+
+#: templates/includes/sidebar.html:30
+msgid "No data available"
+msgstr "No data available"
+
+#: templates/includes/sidebar.html:64
+msgid "No news available"
+msgstr "No news available"
+
+#: templates/includes/sidebar.html:75
+msgid "Follow Us"
+msgstr "Follow Us"
+
+#: templates/news/category_detail.html:13
+msgid "News in"
+msgstr "News in"
+
+#: templates/news/category_detail.html:13
+msgid "category"
+msgstr "category"
+
+#: templates/news/category_detail.html:63
+msgid "No news available in this category yet."
+msgstr "No news available in this category yet."
+
+#: templates/news/delete.html:4 templates/news/detail.html:241
+msgid "Delete News"
+msgstr "Delete News"
+
+#: templates/news/delete.html:28
+msgid "Delete News?"
+msgstr "Delete News?"
+
+#: templates/news/delete.html:32
+msgid "Are you sure you want to delete this news?"
+msgstr "Are you sure you want to delete this news?"
+
+#: templates/news/delete.html:41
+msgid "This action cannot be undone."
+msgstr "This action cannot be undone."
+
+#: templates/news/delete.html:61
+msgid "Delete"
+msgstr "Delete"
+
+#: templates/news/detail.html:84
+msgid "Comments"
+msgstr "Comments"
+
+#: templates/news/detail.html:143
+msgid "No comments yet."
+msgstr "No comments yet."
+
+#: templates/news/detail.html:160
+msgid "Leave a comment"
+msgstr "Leave a comment"
+
+#: templates/news/detail.html:186
+msgid "Comment"
+msgstr "Comment"
+
+#: templates/news/detail.html:195
+msgid "You need to"
+msgstr "You need to"
+
+#: templates/news/detail.html:201
+msgid "login"
+msgstr "login"
+
+#: templates/news/detail.html:204
+msgid "to leave a comment."
+msgstr "to leave a comment."
+
+#: templates/news/detail.html:228 templates/news/news_update.html:4
+#: templates/news/news_update.html:20
+msgid "Update News"
+msgstr "Update News"
+
+#: templates/news/news_create.html:4 templates/news/news_create.html:21
+#: templates/news/news_create.html:96
+msgid "Create News"
+msgstr "Create News"
+
+#: templates/news/news_create.html:25
+msgid "Create and publish a new news article."
+msgstr "Create and publish a new news article."
+
+#: templates/news/news_update.html:24
+msgid "Update your news information below."
+msgstr "Update your news information below."
+
+#: templates/news/news_update.html:69
+msgid "Update"
+msgstr "Update"
+
+#: templates/partials/contact_form.html:4
+msgid "📞 Biz bilan bog‘lanish"
+msgstr "📞 Contact Us"
+
+#: templates/partials/contact_form.html:9
+msgid "Biz bilan bog‘lanish"
+msgstr "Contact Us"
+
+#: templates/partials/contact_form.html:20
+msgid "Manzil"
+msgstr "Address"
+
+#: templates/partials/contact_form.html:24
+msgid "Toshkent shahri, Yunusobod tumani"
+msgstr "Yunusobod District, Tashkent City"
+
+#: templates/partials/contact_form.html:38
+msgid "Telefon"
+msgstr "Phone"
+
+#: templates/partials/contact_form.html:48
+msgid "Ijtimoiy tarmoqlar"
+msgstr "Social Media"
+
+#: templates/partials/contact_form.html:86
+msgid "Xabar yuboring"
+msgstr "Send a Message"
+
+#: templates/partials/contact_form.html:98
+msgid "Ismingiz"
+msgstr "Your Name"
+
+#: templates/partials/contact_form.html:115
+msgid "Email manzilingiz"
+msgstr "Your Email Address"
+
+#: templates/partials/contact_form.html:132
+msgid "Xabaringiz"
+msgstr "Your Message"
+
+#: templates/partials/contact_form.html:148
+msgid "Yuborish"
+msgstr "Send"
+
+#: templates/registration/logged_out.html:27
+#: templates/registration/logout.html:27
+msgid "Are you sure you want to logout?"
+msgstr "Are you sure you want to logout?"
+
+#: templates/registration/logged_out.html:32
+#: templates/registration/logout.html:32
+msgid ""
+"You will be logged out from your account and redirected to the login page."
+msgstr ""
+"You will be logged out from your account and redirected to the login page."
+
+#: templates/registration/login.html:81
+msgid "Don't have an account?"
+msgstr "Don't have an account?"
+
+#: templates/registration/signup.html:5
+msgid "Sign Up"
+msgstr "Sign Up"
+
+#: templates/registration/signup.html:18 templates/registration/signup.html:221
+msgid "Create Account"
+msgstr "Create Account"
+
+#: templates/registration/signup.html:22
+msgid "Create your account and join us"
+msgstr "Create your account and join us"
+
+#: templates/registration/signup.html:166
+msgid "Choose your profile picture."
+msgstr "Choose your profile picture."
+
+#: templates/registration/signup.html:229
+msgid "Already have an account?"
+msgstr "Already have an account."

@@ -12,4 +12,4 @@ class ContactForm(forms.ModelForm):
 class NewnessForm(forms.ModelForm):
     class Meta:
         model = Newness
-        fields = ['title', 'content', 'photo', 'category', 'status']
+        fields = ['title_en', 'title_ru', 'title_uz', 'content_en',  'content_ru', 'content_uz',  'photo', 'category', 'status']

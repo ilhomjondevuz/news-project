@@ -1,0 +1,466 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-25 12:06+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Russian <ru@li.org>\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
+"(n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: apps/accounts/forms.py:77 templates/accounts/profile.html:77
+#: templates/registration/login.html:38
+msgid "Username"
+msgstr "Имя пользователя"
+
+#: apps/accounts/forms.py:78 apps/accounts/forms.py:142
+#: apps/accounts/models.py:16 templates/accounts/profile.html:90
+#: templates/partials/contact_form.html:28
+msgid "Email"
+msgstr "Электронная почта"
+
+#: apps/accounts/forms.py:79 apps/accounts/forms.py:143
+#: templates/accounts/profile.html:103
+msgid "First Name"
+msgstr "Имя"
+
+#: apps/accounts/forms.py:80 apps/accounts/forms.py:144
+#: templates/accounts/profile.html:116
+msgid "Last Name"
+msgstr "Фамилия"
+
+#: apps/accounts/forms.py:81 apps/accounts/forms.py:145
+#: apps/accounts/models.py:18 templates/accounts/profile.html:129
+msgid "Gender"
+msgstr "Пол"
+
+#: apps/accounts/forms.py:82 apps/accounts/forms.py:146
+#: apps/accounts/models.py:19 templates/accounts/profile.html:146
+msgid "Birth Date"
+msgstr "Дата рождения"
+
+#: apps/accounts/forms.py:83 apps/accounts/forms.py:147
+#: apps/accounts/models.py:20
+msgid "Avatar"
+msgstr "Аватар"
+
+#: apps/accounts/forms.py:84 templates/registration/login.html:58
+msgid "Password"
+msgstr "Пароль"
+
+#: apps/accounts/forms.py:85
+msgid "Confirm password"
+msgstr "Подтвердите пароль"
+
+#: apps/accounts/models.py:17
+msgid "Role"
+msgstr "Роль"
+
+#: apps/accounts/views.py:24
+msgid "Registration successful."
+msgstr "Регистрация прошла успешно."
+
+#: apps/accounts/views.py:32
+msgid "Login successful."
+msgstr "Вход выполнен успешно."
+
+#: apps/accounts/views.py:43
+msgid "Username or password is incorrect."
+msgstr "Неверное имя пользователя или пароль."
+
+#: apps/accounts/views.py:45
+msgid "Your account is inactive."
+msgstr "Ваша учетная запись неактивна."
+
+#: apps/accounts/views.py:51
+msgid "Please correct the error below."
+msgstr "Пожалуйста, исправьте ошибку ниже."
+
+#: apps/news/models.py:12
+msgid "Draft"
+msgstr "Черновик"
+
+#: apps/news/models.py:13
+msgid "Published"
+msgstr "Опубликовано"
+
+#: apps/news/models.py:60 apps/news/models.py:61 templates/base.html:180
+msgid "News"
+msgstr "Новости"
+
+#: apps/news/models.py:89
+msgid "Category"
+msgstr "Категория"
+
+#: apps/news/models.py:90 templates/base.html:196 templates/base.html:399
+msgid "Categories"
+msgstr "Категории"
+
+#: apps/news/models.py:111
+msgid "Contact "
+msgstr "Контакт"
+
+#: apps/news/models.py:112
+msgid "Contacts"
+msgstr "Контакты"
+
+#: core/settings.py:132 templates/base.html:73 templates/base.html:118
+msgid "English"
+msgstr "Английский"
+
+#: core/settings.py:133
+msgid "Russian"
+msgstr "Русский"
+
+#: core/settings.py:134
+msgid "Uzbek"
+msgstr "Узбекский"
+
+#: templates/accounts/password_change.html:4
+#: templates/accounts/password_change.html:16
+#: templates/accounts/password_change.html:83
+#: templates/accounts/profile.html:218
+msgid "Change Password"
+msgstr "Изменить пароль"
+
+#: templates/accounts/password_change.html:33
+msgid "Current password"
+msgstr "Текущий пароль"
+
+#: templates/accounts/password_change.html:50
+msgid "New password"
+msgstr "Новый пароль"
+
+#: templates/accounts/password_change.html:67
+msgid "Confirm new password"
+msgstr "Подтвердите новый пароль"
+
+#: templates/accounts/password_change_done.html:4
+msgid "Password Changed"
+msgstr "Пароль изменён"
+
+#: templates/accounts/password_change_done.html:22
+msgid "Password Changed Successfully"
+msgstr "Пароль успешно изменён"
+
+#: templates/accounts/password_change_done.html:26
+msgid "Your password has been changed successfully."
+msgstr "Ваш пароль был успешно изменён."
+
+#: templates/accounts/password_change_done.html:33
+msgid "Back to Home"
+msgstr "Вернуться на главную"
+
+#: templates/accounts/profile.html:5
+msgid "Profile"
+msgstr "Профиль"
+
+#: templates/accounts/profile.html:62
+msgid "User Information"
+msgstr "Информация о пользователе"
+
+#: templates/accounts/profile.html:66
+msgid "Your personal account information"
+msgstr "Информация о вашей личной учётной записи"
+
+#: templates/accounts/profile.html:136 templates/accounts/profile.html:153
+msgid "Not provided"
+msgstr "Не указано"
+
+#: templates/accounts/profile.html:165
+msgid "Account Information"
+msgstr "Информация об аккаунте"
+
+#: templates/accounts/profile.html:174
+msgid "Joined"
+msgstr "Дата регистрации"
+
+#: templates/accounts/profile.html:187
+msgid "Last Login"
+msgstr "Последний вход"
+
+#: templates/accounts/profile.html:194
+msgid "Never"
+msgstr "Никогда"
+
+#: templates/accounts/profile.html:210 templates/accounts/profile_update.html:5
+#: templates/accounts/profile_update.html:45
+msgid "Edit Profile"
+msgstr "Редактировать профиль"
+
+#: templates/accounts/profile_update.html:49
+msgid "Update your personal information"
+msgstr "Обновите вашу личную информацию"
+
+#: templates/accounts/profile_update.html:178
+msgid "Upload a new profile picture."
+msgstr "Загрузите новое изображение профиля."
+
+#: templates/accounts/profile_update.html:198 templates/news/delete.html:53
+#: templates/news/news_create.html:88 templates/news/news_update.html:76
+#: templates/registration/logged_out.html:53
+#: templates/registration/logout.html:53
+msgid "Cancel"
+msgstr "Отмена"
+
+#: templates/accounts/profile_update.html:206
+msgid "Save Changes"
+msgstr "Сохранить изменения"
+
+#: templates/base.html:11 templates/home.html:5
+msgid "Homepage"
+msgstr "Главная страница"
+
+#: templates/base.html:68 templates/base.html:100
+msgid "O‘zbekcha"
+msgstr "Узбекский"
+
+#: templates/base.html:78 templates/base.html:136
+msgid "Русский"
+msgstr "Русский"
+
+#: templates/base.html:159
+msgid "Toggle navigation"
+msgstr "Переключить навигацию"
+
+#: templates/base.html:226
+msgid "No categories"
+msgstr "Нет категорий"
+
+#: templates/base.html:246
+msgid "Contact"
+msgstr "Контакты"
+
+#: templates/base.html:277
+msgid "News create"
+msgstr "Создать новость"
+
+#: templates/base.html:291 templates/registration/logged_out.html:4
+#: templates/registration/logged_out.html:45
+#: templates/registration/logout.html:4 templates/registration/logout.html:45
+msgid "Logout"
+msgstr "Выйти"
+
+#: templates/base.html:308 templates/registration/login.html:5
+#: templates/registration/login.html:18 templates/registration/login.html:76
+#: templates/registration/signup.html:236
+msgid "Login"
+msgstr "Войти"
+
+#: templates/base.html:322 templates/registration/login.html:84
+msgid "Register"
+msgstr "Зарегистрироваться"
+
+#: templates/base.html:357
+msgid "Close"
+msgstr "Закрыть"
+
+#: templates/base.html:434
+msgid "No categories available"
+msgstr "Категории недоступны"
+
+#: templates/base.html:464
+msgid "All rights reserved."
+msgstr "Все права защищены."
+
+#: templates/home.html:13 templates/includes/sidebar.html:40
+msgid "Latest News"
+msgstr "Последние новости"
+
+#: templates/home.html:40 templates/news/category_detail.html:44
+msgid "Read more"
+msgstr "Читать далее"
+
+#: templates/home.html:59
+msgid "No news available yet."
+msgstr "Новостей пока нет."
+
+#: templates/includes/sidebar.html:8
+msgid "Most Viewed"
+msgstr "Самые просматриваемые"
+
+#: templates/includes/sidebar.html:30
+msgid "No data available"
+msgstr "Нет доступных данных"
+
+#: templates/includes/sidebar.html:64
+msgid "No news available"
+msgstr "Новостей нет"
+
+#: templates/includes/sidebar.html:75
+msgid "Follow Us"
+msgstr "Подписывайтесь на нас"
+
+#: templates/news/category_detail.html:13
+msgid "News in"
+msgstr "Новости в категории"
+
+#: templates/news/category_detail.html:13
+msgid "category"
+msgstr "категория"
+
+#: templates/news/category_detail.html:63
+msgid "No news available in this category yet."
+msgstr "В этой категории пока нет новостей."
+
+#: templates/news/delete.html:4 templates/news/detail.html:241
+msgid "Delete News"
+msgstr "Удалить новость"
+
+#: templates/news/delete.html:28
+msgid "Delete News?"
+msgstr "Удалить новость?"
+
+#: templates/news/delete.html:32
+msgid "Are you sure you want to delete this news?"
+msgstr "Вы уверены, что хотите удалить эту новость?"
+
+#: templates/news/delete.html:41
+msgid "This action cannot be undone."
+msgstr "Это действие нельзя отменить."
+
+#: templates/news/delete.html:61
+msgid "Delete"
+msgstr "Удалить"
+
+#: templates/news/detail.html:84
+msgid "Comments"
+msgstr "Комментарии"
+
+#: templates/news/detail.html:143
+msgid "No comments yet."
+msgstr "Комментариев пока нет."
+
+#: templates/news/detail.html:160
+msgid "Leave a comment"
+msgstr "Оставить комментарий"
+
+#: templates/news/detail.html:186
+msgid "Comment"
+msgstr "Комментировать"
+
+#: templates/news/detail.html:195
+msgid "You need to"
+msgstr "Вам необходимо"
+
+#: templates/news/detail.html:201
+msgid "login"
+msgstr "войти"
+
+#: templates/news/detail.html:204
+msgid "to leave a comment."
+msgstr "чтобы оставить комментарий."
+
+#: templates/news/detail.html:228 templates/news/news_update.html:4
+#: templates/news/news_update.html:20
+msgid "Update News"
+msgstr "Обновить новость"
+
+#: templates/news/news_create.html:4 templates/news/news_create.html:21
+#: templates/news/news_create.html:96
+msgid "Create News"
+msgstr "Создать новость"
+
+#: templates/news/news_create.html:25
+msgid "Create and publish a new news article."
+msgstr "Создайте и опубликуйте новую новостную статью."
+
+#: templates/news/news_update.html:24
+msgid "Update your news information below."
+msgstr "Обновите информацию о вашей новости ниже."
+
+#: templates/news/news_update.html:69
+msgid "Update"
+msgstr "Обновить"
+
+#: templates/partials/contact_form.html:4
+msgid "📞 Biz bilan bog‘lanish"
+msgstr "📞 Связаться с нами"
+
+#: templates/partials/contact_form.html:9
+msgid "Biz bilan bog‘lanish"
+msgstr "Связаться с нами"
+
+#: templates/partials/contact_form.html:20
+msgid "Manzil"
+msgstr "Адрес"
+
+#: templates/partials/contact_form.html:24
+msgid "Toshkent shahri, Yunusobod tumani"
+msgstr "г. Ташкент, Юнусабадский район"
+
+#: templates/partials/contact_form.html:38
+msgid "Telefon"
+msgstr "Телефон"
+
+#: templates/partials/contact_form.html:48
+msgid "Ijtimoiy tarmoqlar"
+msgstr "Социальные сети"
+
+#: templates/partials/contact_form.html:86
+msgid "Xabar yuboring"
+msgstr "Отправьте сообщение"
+
+#: templates/partials/contact_form.html:98
+msgid "Ismingiz"
+msgstr "Ваше имя"
+
+#: templates/partials/contact_form.html:115
+msgid "Email manzilingiz"
+msgstr "Ваш адрес электронной почты"
+
+#: templates/partials/contact_form.html:132
+msgid "Xabaringiz"
+msgstr "Ваше сообщение"
+
+#: templates/partials/contact_form.html:148
+msgid "Yuborish"
+msgstr "Отправить"
+
+#: templates/registration/logged_out.html:27
+#: templates/registration/logout.html:27
+msgid "Are you sure you want to logout?"
+msgstr "Вы уверены, что хотите выйти?"
+
+#: templates/registration/logged_out.html:32
+#: templates/registration/logout.html:32
+msgid ""
+"You will be logged out from your account and redirected to the login page."
+msgstr ""
+"Вы выйдете из своей учётной записи и будете перенаправлены на страницу входа."
+
+#: templates/registration/login.html:81
+msgid "Don't have an account?"
+msgstr "У вас нет аккаунта?"
+
+#: templates/registration/signup.html:5
+msgid "Sign Up"
+msgstr "Регистрация"
+
+#: templates/registration/signup.html:18 templates/registration/signup.html:221
+msgid "Create Account"
+msgstr "Создать аккаунт"
+
+#: templates/registration/signup.html:22
+msgid "Create your account and join us"
+msgstr "Создайте аккаунт и присоединяйтесь к нам"
+
+#: templates/registration/signup.html:166
+msgid "Choose your profile picture."
+msgstr "Выберите изображение профиля."
+
+#: templates/registration/signup.html:229
+msgid "Already have an account?"
+msgstr "Уже есть аккаунт?"

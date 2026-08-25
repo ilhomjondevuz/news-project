@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Delete News{% endblock title %}
+{% block title %}{% translate "Delete News" %}{% endblock title %}
 
 {% block content %}
 
@@ -24,11 +25,11 @@
                     </div>
 
                     <h2 class="fw-bold mb-3">
-                        Delete News?
+                        {% translate "Delete News?" %}
                     </h2>
 
                     <p class="text-muted mb-2">
-                        Are you sure you want to delete this news?
+                        {% translate "Are you sure you want to delete this news?" %}
                     </p>
 
                     <h5 class="fw-semibold mb-4">
@@ -37,7 +38,7 @@
 
                     <div class="alert alert-warning text-start">
                         <i class="bi bi-exclamation-triangle me-2"></i>
-                        This action cannot be undone.
+                        {% translate "This action cannot be undone." %}
                     </div>
 
                     <form method="post" class="d-flex justify-content-center gap-2 mt-4">
@@ -48,9 +49,8 @@
                             href="{% url 'news_detail' newness.slug %}"
                             class="btn btn-outline-secondary px-4"
                         >
-
                             <i class="bi bi-arrow-left me-1"></i>
-                            Cancel
+                            {% translate "Cancel" %}
                         </a>
 
                         <button
@@ -58,7 +58,7 @@
                             class="btn btn-danger px-4"
                         >
                             <i class="bi bi-trash3 me-1"></i>
-                            Delete
+                            {% translate "Delete" %}
                         </button>
 
                     </form>
@@ -74,4 +74,3 @@
 </div>
 
 {% endblock content %}
-```

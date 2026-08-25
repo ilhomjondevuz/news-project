@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Create News{% endblock title %}
+{% block title %}{% translate "Create News" %}{% endblock title %}
 
 {% block content %}
 
@@ -17,11 +18,11 @@
                     <!-- Header -->
                     <div class="mb-4">
                         <h2 class="fw-bold mb-2">
-                            Create News
+                            {% translate "Create News" %}
                         </h2>
 
                         <p class="text-muted mb-0">
-                            Create and publish a new news article.
+                            {% translate "Create and publish a new news article." %}
                         </p>
                     </div>
 
@@ -84,7 +85,7 @@
                                 class="btn btn-outline-secondary px-4"
                             >
                                 <i class="bi bi-arrow-left me-1"></i>
-                                Cancel
+                                {% translate "Cancel" %}
                             </a>
 
                             <button
@@ -92,7 +93,7 @@
                                 class="btn btn-primary px-4"
                             >
                                 <i class="bi bi-plus-circle me-1"></i>
-                                Create News
+                                {% translate "Create News" %}
                             </button>
 
                         </div>
@@ -110,4 +111,3 @@
 </div>
 
 {% endblock content %}
-```

@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
-{% block title %}Profile{% endblock title %}
+{% block title %}{% translate "Profile" %}{% endblock title %}
 
 {% block content %}
 
@@ -58,11 +59,11 @@
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <div>
                             <h4 class="fw-bold mb-1">
-                                User Information
+                                {% translate "User Information" %}
                             </h4>
 
                             <p class="text-muted mb-0">
-                                Your personal account information
+                                {% translate "Your personal account information" %}
                             </p>
                         </div>
                     </div>
@@ -73,7 +74,7 @@
                         <div class="col-md-6">
                             <div class="bg-light rounded-3 p-3 h-100">
                                 <small class="text-muted d-block mb-1">
-                                    Username
+                                    {% translate "Username" %}
                                 </small>
 
                                 <span class="fw-semibold">
@@ -86,7 +87,7 @@
                         <div class="col-md-6">
                             <div class="bg-light rounded-3 p-3 h-100">
                                 <small class="text-muted d-block mb-1">
-                                    Email
+                                    {% translate "Email" %}
                                 </small>
 
                                 <span class="fw-semibold">
@@ -99,7 +100,7 @@
                         <div class="col-md-6">
                             <div class="bg-light rounded-3 p-3 h-100">
                                 <small class="text-muted d-block mb-1">
-                                    First Name
+                                    {% translate "First Name" %}
                                 </small>
 
                                 <span class="fw-semibold">
@@ -112,7 +113,7 @@
                         <div class="col-md-6">
                             <div class="bg-light rounded-3 p-3 h-100">
                                 <small class="text-muted d-block mb-1">
-                                    Last Name
+                                    {% translate "Last Name" %}
                                 </small>
 
                                 <span class="fw-semibold">
@@ -125,14 +126,14 @@
                         <div class="col-md-6">
                             <div class="bg-light rounded-3 p-3 h-100">
                                 <small class="text-muted d-block mb-1">
-                                    Gender
+                                    {% translate "Gender" %}
                                 </small>
 
                                 <span class="fw-semibold">
                                     {% if user.gender %}
                                         {{ user.get_gender_display }}
                                     {% else %}
-                                        Not provided
+                                        {% translate "Not provided" %}
                                     {% endif %}
                                 </span>
                             </div>
@@ -142,14 +143,14 @@
                         <div class="col-md-6">
                             <div class="bg-light rounded-3 p-3 h-100">
                                 <small class="text-muted d-block mb-1">
-                                    Birth Date
+                                    {% translate "Birth Date" %}
                                 </small>
 
                                 <span class="fw-semibold">
                                     {% if user.birthDate %}
                                         {{ user.birthDate|date:"F d, Y" }}
                                     {% else %}
-                                        Not provided
+                                        {% translate "Not provided" %}
                                     {% endif %}
                                 </span>
                             </div>
@@ -161,7 +162,7 @@
                     <hr class="my-4">
 
                     <h5 class="fw-bold mb-3">
-                        Account Information
+                        {% translate "Account Information" %}
                     </h5>
 
                     <div class="row g-3">
@@ -170,7 +171,7 @@
                         <div class="col-md-6">
                             <div class="bg-light rounded-3 p-3">
                                 <small class="text-muted d-block mb-1">
-                                    Joined
+                                    {% translate "Joined" %}
                                 </small>
 
                                 <span class="fw-semibold">
@@ -183,14 +184,14 @@
                         <div class="col-md-6">
                             <div class="bg-light rounded-3 p-3">
                                 <small class="text-muted d-block mb-1">
-                                    Last Login
+                                    {% translate "Last Login" %}
                                 </small>
 
                                 <span class="fw-semibold">
                                     {% if user.last_login %}
                                         {{ user.last_login|date:"F d, Y H:i" }}
                                     {% else %}
-                                        Never
+                                        {% translate "Never" %}
                                     {% endif %}
                                 </span>
                             </div>
@@ -206,7 +207,7 @@
                             class="btn btn-primary rounded-3"
                         >
                             <i class="bi bi-pencil me-1"></i>
-                            Edit Profile
+                            {% translate "Edit Profile" %}
                         </a>
 
                         <a
@@ -214,7 +215,7 @@
                             class="btn btn-outline-primary rounded-3"
                         >
                             <i class="bi bi-shield-lock me-1"></i>
-                            Change Password
+                            {% translate "Change Password" %}
                         </a>
 
                     </div>
