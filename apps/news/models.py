@@ -12,19 +12,12 @@ class Newness(models.Model):
         DRAFT = "DF", _("Draft")
         PUBLISHED = "PB", _("Published")
 
-    # hit count
-    # hitcount = GenericRelation(
-    #     HitCount,
-    #     related_query_name='newness',
-    # )
-
     title = models.CharField(
         max_length=200,
     )
     slug = models.SlugField(
         max_length=200,
         unique=True,
-        primary_key=True,
     )
     content = models.TextField()
 
