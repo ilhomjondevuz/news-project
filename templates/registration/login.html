@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}
+    {% translate "Login" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+
+            <div class="card shadow-sm border-0">
+                <div class="card-body p-4">
+
+                    <h2 class="text-center mb-4">
+                        {% translate "Login" %}
+                    </h2>
+
+                    <form method="post">
+                        {% csrf_token %}
+
+                        {% if form.non_field_errors %}
+                            <div class="alert alert-danger">
+                                {% for error in form.non_field_errors %}
+                                    <div>{{ error }}</div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+
+                        <!-- Username -->
+                        <div class="mb-3">
+                            <label
+                                for="{{ form.username.id_for_label }}"
+                                class="form-label"
+                            >
+                                {% translate "Username" %}
+                            </label>
+
+                            {{ form.username }}
+
+                            {% if form.username.errors %}
+                                {% for error in form.username.errors %}
+                                    <div class="text-danger small mt-1">
+                                        {{ error }}
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+
+                        <!-- Password -->
+                        <div class="mb-3">
+                            <label
+                                for="{{ form.password.id_for_label }}"
+                                class="form-label"
+                            >
+                                {% translate "Password" %}
+                            </label>
+
+                            {{ form.password }}
+
+                            {% if form.password.errors %}
+                                {% for error in form.password.errors %}
+                                    <div class="text-danger small mt-1">
+                                        {{ error }}
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary w-100"
+                        >
+                            {% translate "Login" %}
+                        </button>
+                    </form>
+
+                    <div class="text-center mt-3">
+                        <span>{% translate "Don't have an account?" %}</span>
+
+                        <a href="{% url 'register' %}">
+                            {% translate "Register" %}
+                        </a>
+                    </div>
+                    <div class="text-center mt-3">
+                            <span>{% translate "Did you forget your password?" %}</span>
+                        <a href="{% url 'password_reset' %}">
+                            Forgot password?
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

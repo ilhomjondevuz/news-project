@@ -1,0 +1,220 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% translate "Edit Profile" %}{% endblock title %}
+
+{% block content %}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-9 col-lg-7">
+
+            <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+
+                <!-- Header -->
+                <div class="bg-primary text-white p-4">
+                    <div class="d-flex align-items-center">
+
+                        <!-- Current Avatar -->
+                        {% if user.avatar %}
+                            <img
+                                src="{{ user.avatar.url }}"
+                                alt="{{ user.username }}"
+                                width="85"
+                                height="85"
+                                class="rounded-circle object-fit-cover me-3"
+                            >
+                        {% else %}
+                            <div
+                                class="bg-white text-primary rounded-circle
+                                       d-flex align-items-center justify-content-center
+                                       fw-bold fs-2 me-3"
+                                style="width: 85px; height: 85px;"
+                            >
+                                {% if user.first_name %}
+                                    {{ user.first_name|first|upper }}
+                                {% else %}
+                                    {{ user.username|first|upper }}
+                                {% endif %}
+                            </div>
+                        {% endif %}
+
+                        <div>
+                            <h3 class="fw-bold mb-1">
+                                {% translate "Edit Profile" %}
+                            </h3>
+
+                            <p class="mb-0 opacity-75">
+                                {% translate "Update your personal information" %}
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="card-body p-4 p-md-5">
+
+                    <form
+                        method="post"
+                        enctype="multipart/form-data"
+                        novalidate
+                    >
+
+                        {% csrf_token %}
+
+                        {% if form.non_field_errors %}
+                            <div class="alert alert-danger rounded-3">
+                                {% for error in form.non_field_errors %}
+                                    <div>{{ error }}</div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+
+                        <div class="row g-3">
+
+                            <!-- Email -->
+                            <div class="col-12">
+                                <label
+                                    for="{{ form.email.id_for_label }}"
+                                    class="form-label fw-semibold"
+                                >
+                                    {{ form.email.label }}
+                                </label>
+
+                                {{ form.email }}
+
+                                {% for error in form.email.errors %}
+                                    <div class="text-danger small mt-1">
+                                        {{ error }}
+                                    </div>
+                                {% endfor %}
+                            </div>
+
+                            <!-- First Name -->
+                            <div class="col-md-6">
+                                <label
+                                    for="{{ form.first_name.id_for_label }}"
+                                    class="form-label fw-semibold"
+                                >
+                                    {{ form.first_name.label }}
+                                </label>
+
+                                {{ form.first_name }}
+
+                                {% for error in form.first_name.errors %}
+                                    <div class="text-danger small mt-1">
+                                        {{ error }}
+                                    </div>
+                                {% endfor %}
+                            </div>
+
+                            <!-- Last Name -->
+                            <div class="col-md-6">
+                                <label
+                                    for="{{ form.last_name.id_for_label }}"
+                                    class="form-label fw-semibold"
+                                >
+                                    {{ form.last_name.label }}
+                                </label>
+
+                                {{ form.last_name }}
+
+                                {% for error in form.last_name.errors %}
+                                    <div class="text-danger small mt-1">
+                                        {{ error }}
+                                    </div>
+                                {% endfor %}
+                            </div>
+
+                            <!-- Gender -->
+                            <div class="col-md-6">
+                                <label
+                                    for="{{ form.gender.id_for_label }}"
+                                    class="form-label fw-semibold"
+                                >
+                                    {{ form.gender.label }}
+                                </label>
+
+                                {{ form.gender }}
+
+                                {% for error in form.gender.errors %}
+                                    <div class="text-danger small mt-1">
+                                        {{ error }}
+                                    </div>
+                                {% endfor %}
+                            </div>
+
+                            <!-- Birth Date -->
+                            <div class="col-md-6">
+                                <label
+                                    for="{{ form.birthDate.id_for_label }}"
+                                    class="form-label fw-semibold"
+                                >
+                                    {{ form.birthDate.label }}
+                                </label>
+
+                                {{ form.birthDate }}
+
+                                {% for error in form.birthDate.errors %}
+                                    <div class="text-danger small mt-1">
+                                        {{ error }}
+                                    </div>
+                                {% endfor %}
+                            </div>
+
+                            <!-- Avatar -->
+                            <div class="col-12">
+                                <label
+                                    for="{{ form.avatar.id_for_label }}"
+                                    class="form-label fw-semibold"
+                                >
+                                    {{ form.avatar.label }}
+                                </label>
+
+                                {{ form.avatar }}
+
+                                <div class="form-text">
+                                    {% translate "Upload a new profile picture." %}
+                                </div>
+
+                                {% for error in form.avatar.errors %}
+                                    <div class="text-danger small mt-1">
+                                        {{ error }}
+                                    </div>
+                                {% endfor %}
+                            </div>
+
+                        </div>
+
+                        <!-- Buttons -->
+                        <div class="d-flex justify-content-between mt-4">
+
+                            <a
+                                href="{% url 'profile' %}"
+                                class="btn btn-outline-secondary rounded-3"
+                            >
+                                <i class="bi bi-arrow-left me-1"></i>
+                                {% translate "Cancel" %}
+                            </a>
+
+                            <button
+                                type="submit"
+                                class="btn btn-primary rounded-3 px-4"
+                            >
+                                <i class="bi bi-check-circle me-1"></i>
+                                {% translate "Save Changes" %}
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
