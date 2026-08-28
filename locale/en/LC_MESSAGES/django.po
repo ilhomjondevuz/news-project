@@ -1,11 +1,11 @@
 # English translations
-#
+# fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: NewsDjangoWebsite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-25 12:06+0500\n"
-"PO-Revision-Date: 2026-08-25 12:08+0500\n"
+"POT-Creation-Date: 2026-08-28 08:35+0500\n"
+"PO-Revision-Date: 2026-08-28 08:36+0500\n"
 "Last-Translator: Ilhomjon\n"
 "Language-Team: English\n"
 "Language: en\n"
@@ -62,55 +62,67 @@ msgstr "Confirm password"
 msgid "Role"
 msgstr "Role"
 
-#: apps/accounts/views.py:24
+#: apps/accounts/views.py:23
 msgid "Registration successful."
 msgstr "Registration successful."
 
-#: apps/accounts/views.py:32
+#: apps/accounts/views.py:31
 msgid "Login successful."
 msgstr "Login successful."
 
-#: apps/accounts/views.py:43
+#: apps/accounts/views.py:42
 msgid "Username or password is incorrect."
 msgstr "Username or password is incorrect."
 
-#: apps/accounts/views.py:45
+#: apps/accounts/views.py:44
 msgid "Your account is inactive."
 msgstr "Your account is inactive."
 
-#: apps/accounts/views.py:51
+#: apps/accounts/views.py:50
 msgid "Please correct the error below."
 msgstr "Please correct the error below."
 
-#: apps/news/models.py:12
+#: apps/news/forms.py:24
+msgid "Write your comment..."
+msgstr "Write your comment..."
+
+#: apps/news/models.py:14
 msgid "Draft"
 msgstr "Draft"
 
-#: apps/news/models.py:13
+#: apps/news/models.py:15
 msgid "Published"
 msgstr "Published"
 
-#: apps/news/models.py:60 apps/news/models.py:61 templates/base.html:180
+#: apps/news/models.py:63 apps/news/models.py:64 templates/base.html:111
 msgid "News"
 msgstr "News"
 
-#: apps/news/models.py:89
+#: apps/news/models.py:92
 msgid "Category"
 msgstr "Category"
 
-#: apps/news/models.py:90 templates/base.html:196 templates/base.html:399
+#: apps/news/models.py:93 templates/base.html:127 templates/base.html:327
 msgid "Categories"
 msgstr "Categories"
 
-#: apps/news/models.py:111
+#: apps/news/models.py:114
 msgid "Contact "
 msgstr "Contact"
 
-#: apps/news/models.py:112
+#: apps/news/models.py:115
 msgid "Contacts"
 msgstr "Contacts"
 
-#: core/settings.py:132 templates/base.html:73 templates/base.html:118
+#: apps/news/models.py:136
+msgid "Comment "
+msgstr "Comment"
+
+#: apps/news/models.py:137 templates/news/detail.html:135
+msgid "Comments"
+msgstr "Comments"
+
+#: core/settings.py:132
 msgid "English"
 msgstr "English"
 
@@ -134,10 +146,12 @@ msgid "Current password"
 msgstr "Current password"
 
 #: templates/accounts/password_change.html:50
+#: templates/registration/password_reset_confirm.html:64
 msgid "New password"
 msgstr "New password"
 
 #: templates/accounts/password_change.html:67
+#: templates/registration/password_reset_confirm.html:85
 msgid "Confirm new password"
 msgstr "Confirm new password"
 
@@ -146,10 +160,12 @@ msgid "Password Changed"
 msgstr "Password Changed"
 
 #: templates/accounts/password_change_done.html:22
+#: templates/registration/password_reset_complete.html:5
 msgid "Password Changed Successfully"
 msgstr "Password Changed Successfully"
 
 #: templates/accounts/password_change_done.html:26
+#: templates/registration/password_reset_complete.html:45
 msgid "Your password has been changed successfully."
 msgstr "Your password has been changed successfully."
 
@@ -213,59 +229,51 @@ msgstr "Cancel"
 msgid "Save Changes"
 msgstr "Save Changes"
 
-#: templates/base.html:11 templates/home.html:5
+#: templates/base.html:14 templates/home.html:5
 msgid "Homepage"
 msgstr "Homepage"
 
-#: templates/base.html:68 templates/base.html:100
-msgid "O‘zbekcha"
-msgstr "Uzbek"
-
-#: templates/base.html:78 templates/base.html:136
-msgid "Русский"
-msgstr "Russian"
-
-#: templates/base.html:159
+#: templates/base.html:83
 msgid "Toggle navigation"
 msgstr "Toggle navigation"
 
-#: templates/base.html:226
+#: templates/base.html:157
 msgid "No categories"
 msgstr "No categories"
 
-#: templates/base.html:246
+#: templates/base.html:177
 msgid "Contact"
 msgstr "Contact"
 
-#: templates/base.html:277
+#: templates/base.html:207
 msgid "News create"
-msgstr "Create News"
+msgstr "News create"
 
-#: templates/base.html:291 templates/registration/logged_out.html:4
+#: templates/base.html:221 templates/registration/logged_out.html:4
 #: templates/registration/logged_out.html:45
 #: templates/registration/logout.html:4 templates/registration/logout.html:45
 msgid "Logout"
 msgstr "Logout"
 
-#: templates/base.html:308 templates/registration/login.html:5
+#: templates/base.html:236 templates/registration/login.html:5
 #: templates/registration/login.html:18 templates/registration/login.html:76
 #: templates/registration/signup.html:236
 msgid "Login"
 msgstr "Login"
 
-#: templates/base.html:322 templates/registration/login.html:84
+#: templates/base.html:250 templates/registration/login.html:84
 msgid "Register"
 msgstr "Register"
 
-#: templates/base.html:357
+#: templates/base.html:287
 msgid "Close"
 msgstr "Close"
 
-#: templates/base.html:434
+#: templates/base.html:358
 msgid "No categories available"
 msgstr "No categories available"
 
-#: templates/base.html:464
+#: templates/base.html:389
 msgid "All rights reserved."
 msgstr "All rights reserved."
 
@@ -273,7 +281,7 @@ msgstr "All rights reserved."
 msgid "Latest News"
 msgstr "Latest News"
 
-#: templates/home.html:40 templates/news/category_detail.html:44
+#: templates/home.html:40 templates/news/category_detail.html:45
 msgid "Read more"
 msgstr "Read more"
 
@@ -297,19 +305,19 @@ msgstr "No news available"
 msgid "Follow Us"
 msgstr "Follow Us"
 
-#: templates/news/category_detail.html:13
+#: templates/news/category_detail.html:14
 msgid "News in"
 msgstr "News in"
 
-#: templates/news/category_detail.html:13
+#: templates/news/category_detail.html:14
 msgid "category"
 msgstr "category"
 
-#: templates/news/category_detail.html:63
+#: templates/news/category_detail.html:64
 msgid "No news available in this category yet."
 msgstr "No news available in this category yet."
 
-#: templates/news/delete.html:4 templates/news/detail.html:241
+#: templates/news/delete.html:4 templates/news/detail.html:114
 msgid "Delete News"
 msgstr "Delete News"
 
@@ -329,38 +337,46 @@ msgstr "This action cannot be undone."
 msgid "Delete"
 msgstr "Delete"
 
-#: templates/news/detail.html:84
-msgid "Comments"
-msgstr "Comments"
-
-#: templates/news/detail.html:143
-msgid "No comments yet."
-msgstr "No comments yet."
-
-#: templates/news/detail.html:160
-msgid "Leave a comment"
-msgstr "Leave a comment"
-
-#: templates/news/detail.html:186
-msgid "Comment"
-msgstr "Comment"
-
-#: templates/news/detail.html:195
-msgid "You need to"
-msgstr "You need to"
-
-#: templates/news/detail.html:201
-msgid "login"
-msgstr "login"
-
-#: templates/news/detail.html:204
-msgid "to leave a comment."
-msgstr "to leave a comment."
-
-#: templates/news/detail.html:228 templates/news/news_update.html:4
+#: templates/news/detail.html:104 templates/news/news_update.html:4
 #: templates/news/news_update.html:20
 msgid "Update News"
 msgstr "Update News"
+
+#: templates/news/detail.html:251
+msgid "No comments yet."
+msgstr "No comments yet."
+
+#: templates/news/detail.html:256
+msgid "Be the first to leave a comment."
+msgstr "Be the first to leave a comment."
+
+#: templates/news/detail.html:279
+msgid "Leave a comment"
+msgstr "Leave a comment"
+
+#: templates/news/detail.html:310
+msgid "Your comment"
+msgstr "Your comment"
+
+#: templates/news/detail.html:342
+msgid "Comment"
+msgstr "Comment"
+
+#: templates/news/detail.html:364
+msgid "Want to leave a comment?"
+msgstr "Want to leave a comment?"
+
+#: templates/news/detail.html:370
+msgid "You need to"
+msgstr "You need to"
+
+#: templates/news/detail.html:376
+msgid "login"
+msgstr "login"
+
+#: templates/news/detail.html:379
+msgid "to leave a comment."
+msgstr "to leave a comment."
 
 #: templates/news/news_create.html:4 templates/news/news_create.html:21
 #: templates/news/news_create.html:96
@@ -393,7 +409,7 @@ msgstr "Address"
 
 #: templates/partials/contact_form.html:24
 msgid "Toshkent shahri, Yunusobod tumani"
-msgstr "Yunusobod District, Tashkent City"
+msgstr "Yunusobod District, Tashkent, Uzbekistan"
 
 #: templates/partials/contact_form.html:38
 msgid "Telefon"
@@ -432,12 +448,154 @@ msgstr "Are you sure you want to logout?"
 #: templates/registration/logout.html:32
 msgid ""
 "You will be logged out from your account and redirected to the login page."
-msgstr ""
-"You will be logged out from your account and redirected to the login page."
+msgstr "You will be logged out from your account and redirected to the login page."
 
 #: templates/registration/login.html:81
 msgid "Don't have an account?"
 msgstr "Don't have an account?"
+
+#: templates/registration/login.html:88
+msgid "Did you forget your password?"
+msgstr "Did you forget your password?"
+
+#: templates/registration/password_reset_complete.html:39
+msgid "Password changed successfully!"
+msgstr "Password changed successfully!"
+
+#: templates/registration/password_reset_complete.html:46
+msgid "You can now log in to your account using your new password."
+msgstr "You can now log in to your account using your new password."
+
+#: templates/registration/password_reset_complete.html:55
+msgid "Your account is secure."
+msgstr "Your account is secure."
+
+#: templates/registration/password_reset_complete.html:61
+msgid "Your old password can no longer be used to log in."
+msgstr "Your old password can no longer be used to log in."
+
+#: templates/registration/password_reset_complete.html:72
+msgid "Go to Login"
+msgstr "Go to Login"
+
+#: templates/registration/password_reset_complete.html:83
+msgid "Back to homepage"
+msgstr "Back to Homepage"
+
+#: templates/registration/password_reset_confirm.html:5
+msgid "Set New Password"
+msgstr "Set New Password"
+
+#: templates/registration/password_reset_confirm.html:41
+msgid "Set a new password"
+msgstr "Set a New Password"
+
+#: templates/registration/password_reset_confirm.html:47
+msgid "Enter your new password below."
+msgstr "Enter your new password below."
+
+#: templates/registration/password_reset_confirm.html:113
+msgid "Change password"
+msgstr "Change Password"
+
+#: templates/registration/password_reset_confirm.html:128
+msgid "This password reset link is invalid or has already been used."
+msgstr "This password reset link is invalid or has already been used."
+
+#: templates/registration/password_reset_confirm.html:137
+msgid "Request a new link"
+msgstr "Request a new link"
+
+#: templates/registration/password_reset_confirm.html:153
+#: templates/registration/password_reset_form.html:70
+msgid "Back to login"
+msgstr "Back to Login"
+
+#: templates/registration/password_reset_done.html:5
+msgid "Password Reset Sent"
+msgstr "Password Reset Sent"
+
+#: templates/registration/password_reset_done.html:31
+msgid "Check your email"
+msgstr "Check your email"
+
+#: templates/registration/password_reset_done.html:36
+msgid "We've emailed you instructions for setting your password."
+msgstr "We've emailed you instructions for setting your password."
+
+#: templates/registration/password_reset_done.html:37
+msgid ""
+"If an account exists with the email address you entered, you will receive "
+"the password reset link shortly."
+msgstr "If an account exists with the email address you entered, you will receive the password reset link shortly."
+
+#: templates/registration/password_reset_done.html:47
+msgid "Didn't receive the email?"
+msgstr "Didn't receive the email?"
+
+#: templates/registration/password_reset_done.html:51
+msgid ""
+"Check your spam or junk folder and make sure you entered the correct email "
+"address."
+msgstr "Check your spam or junk folder and make sure you entered the correct email address."
+
+#: templates/registration/password_reset_done.html:63
+msgid "Back to Login"
+msgstr "Back to Login"
+
+#: templates/registration/password_reset_done.html:71
+msgid "Need help? Contact our support team."
+msgstr "Need help? Contact our support team."
+
+#: templates/registration/password_reset_email.html:7
+#: templates/registration/password_reset_email.html:21
+msgid "Password Reset"
+msgstr "Password Reset"
+
+#: templates/registration/password_reset_email.html:25
+msgid "Hello"
+msgstr "Hello"
+
+#: templates/registration/password_reset_email.html:29
+msgid "We received a request to reset your password."
+msgstr "We received a request to reset your password."
+
+#: templates/registration/password_reset_email.html:33
+msgid "Click the button below to create a new password."
+msgstr "Click the button below to create a new password."
+
+#: templates/registration/password_reset_email.html:47
+msgid "Reset Password"
+msgstr "Reset Password"
+
+#: templates/registration/password_reset_email.html:51
+msgid "If you did not request this, you can safely ignore this email."
+msgstr "If you did not request this, you can safely ignore this email."
+
+#: templates/registration/password_reset_form.html:6
+msgid "Forgot password"
+msgstr "Forgot Password"
+
+#: templates/registration/password_reset_form.html:30
+msgid "Forgot password?"
+msgstr "Forgot Password?"
+
+#: templates/registration/password_reset_form.html:35
+msgid ""
+"Enter your email address and we will send you a link to reset your password."
+msgstr "Enter your email address and we will send you a link to reset your password."
+
+#: templates/registration/password_reset_form.html:45
+msgid "Email address"
+msgstr "Email address"
+
+#: templates/registration/password_reset_form.html:61
+msgid "Send reset link"
+msgstr "Send reset link"
+
+#: templates/registration/password_reset_subject.txt:1
+msgid "Password Reset - NewsDjangoWebsite"
+msgstr "Password Reset - NewsDjangoWebsite"
 
 #: templates/registration/signup.html:5
 msgid "Sign Up"
@@ -457,4 +615,4 @@ msgstr "Choose your profile picture."
 
 #: templates/registration/signup.html:229
 msgid "Already have an account?"
-msgstr "Already have an account."
+msgstr "Already have an account?"

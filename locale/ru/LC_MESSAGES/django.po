@@ -2,15 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: NewsDjangoWebsite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-25 12:06+0500\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2026-08-28 08:35+0500\n"
+"PO-Revision-Date: 2026-08-28 08:40+0500\n"
+"Last-Translator: Ilhomjon\n"
 "Language-Team: Russian <ru@li.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -68,55 +67,67 @@ msgstr "Подтвердите пароль"
 msgid "Role"
 msgstr "Роль"
 
-#: apps/accounts/views.py:24
+#: apps/accounts/views.py:23
 msgid "Registration successful."
 msgstr "Регистрация прошла успешно."
 
-#: apps/accounts/views.py:32
+#: apps/accounts/views.py:31
 msgid "Login successful."
 msgstr "Вход выполнен успешно."
 
-#: apps/accounts/views.py:43
+#: apps/accounts/views.py:42
 msgid "Username or password is incorrect."
 msgstr "Неверное имя пользователя или пароль."
 
-#: apps/accounts/views.py:45
+#: apps/accounts/views.py:44
 msgid "Your account is inactive."
 msgstr "Ваша учетная запись неактивна."
 
-#: apps/accounts/views.py:51
+#: apps/accounts/views.py:50
 msgid "Please correct the error below."
 msgstr "Пожалуйста, исправьте ошибку ниже."
 
-#: apps/news/models.py:12
+#: apps/news/forms.py:24
+msgid "Write your comment..."
+msgstr "Напишите свой комментарий..."
+
+#: apps/news/models.py:14
 msgid "Draft"
 msgstr "Черновик"
 
-#: apps/news/models.py:13
+#: apps/news/models.py:15
 msgid "Published"
 msgstr "Опубликовано"
 
-#: apps/news/models.py:60 apps/news/models.py:61 templates/base.html:180
+#: apps/news/models.py:63 apps/news/models.py:64 templates/base.html:111
 msgid "News"
 msgstr "Новости"
 
-#: apps/news/models.py:89
+#: apps/news/models.py:92
 msgid "Category"
 msgstr "Категория"
 
-#: apps/news/models.py:90 templates/base.html:196 templates/base.html:399
+#: apps/news/models.py:93 templates/base.html:127 templates/base.html:327
 msgid "Categories"
 msgstr "Категории"
 
-#: apps/news/models.py:111
+#: apps/news/models.py:114
 msgid "Contact "
 msgstr "Контакт"
 
-#: apps/news/models.py:112
+#: apps/news/models.py:115
 msgid "Contacts"
 msgstr "Контакты"
 
-#: core/settings.py:132 templates/base.html:73 templates/base.html:118
+#: apps/news/models.py:136
+msgid "Comment "
+msgstr "Комментарий"
+
+#: apps/news/models.py:137 templates/news/detail.html:135
+msgid "Comments"
+msgstr "Комментарии"
+
+#: core/settings.py:132
 msgid "English"
 msgstr "Английский"
 
@@ -140,10 +151,12 @@ msgid "Current password"
 msgstr "Текущий пароль"
 
 #: templates/accounts/password_change.html:50
+#: templates/registration/password_reset_confirm.html:64
 msgid "New password"
 msgstr "Новый пароль"
 
 #: templates/accounts/password_change.html:67
+#: templates/registration/password_reset_confirm.html:85
 msgid "Confirm new password"
 msgstr "Подтвердите новый пароль"
 
@@ -152,10 +165,12 @@ msgid "Password Changed"
 msgstr "Пароль изменён"
 
 #: templates/accounts/password_change_done.html:22
+#: templates/registration/password_reset_complete.html:5
 msgid "Password Changed Successfully"
 msgstr "Пароль успешно изменён"
 
 #: templates/accounts/password_change_done.html:26
+#: templates/registration/password_reset_complete.html:45
 msgid "Your password has been changed successfully."
 msgstr "Ваш пароль был успешно изменён."
 
@@ -219,59 +234,51 @@ msgstr "Отмена"
 msgid "Save Changes"
 msgstr "Сохранить изменения"
 
-#: templates/base.html:11 templates/home.html:5
+#: templates/base.html:14 templates/home.html:5
 msgid "Homepage"
 msgstr "Главная страница"
 
-#: templates/base.html:68 templates/base.html:100
-msgid "O‘zbekcha"
-msgstr "Узбекский"
-
-#: templates/base.html:78 templates/base.html:136
-msgid "Русский"
-msgstr "Русский"
-
-#: templates/base.html:159
+#: templates/base.html:83
 msgid "Toggle navigation"
 msgstr "Переключить навигацию"
 
-#: templates/base.html:226
+#: templates/base.html:157
 msgid "No categories"
 msgstr "Нет категорий"
 
-#: templates/base.html:246
+#: templates/base.html:177
 msgid "Contact"
 msgstr "Контакты"
 
-#: templates/base.html:277
+#: templates/base.html:207
 msgid "News create"
 msgstr "Создать новость"
 
-#: templates/base.html:291 templates/registration/logged_out.html:4
+#: templates/base.html:221 templates/registration/logged_out.html:4
 #: templates/registration/logged_out.html:45
 #: templates/registration/logout.html:4 templates/registration/logout.html:45
 msgid "Logout"
 msgstr "Выйти"
 
-#: templates/base.html:308 templates/registration/login.html:5
+#: templates/base.html:236 templates/registration/login.html:5
 #: templates/registration/login.html:18 templates/registration/login.html:76
 #: templates/registration/signup.html:236
 msgid "Login"
 msgstr "Войти"
 
-#: templates/base.html:322 templates/registration/login.html:84
+#: templates/base.html:250 templates/registration/login.html:84
 msgid "Register"
 msgstr "Зарегистрироваться"
 
-#: templates/base.html:357
+#: templates/base.html:287
 msgid "Close"
 msgstr "Закрыть"
 
-#: templates/base.html:434
+#: templates/base.html:358
 msgid "No categories available"
 msgstr "Категории недоступны"
 
-#: templates/base.html:464
+#: templates/base.html:389
 msgid "All rights reserved."
 msgstr "Все права защищены."
 
@@ -279,7 +286,7 @@ msgstr "Все права защищены."
 msgid "Latest News"
 msgstr "Последние новости"
 
-#: templates/home.html:40 templates/news/category_detail.html:44
+#: templates/home.html:40 templates/news/category_detail.html:45
 msgid "Read more"
 msgstr "Читать далее"
 
@@ -303,19 +310,19 @@ msgstr "Новостей нет"
 msgid "Follow Us"
 msgstr "Подписывайтесь на нас"
 
-#: templates/news/category_detail.html:13
+#: templates/news/category_detail.html:14
 msgid "News in"
 msgstr "Новости в категории"
 
-#: templates/news/category_detail.html:13
+#: templates/news/category_detail.html:14
 msgid "category"
 msgstr "категория"
 
-#: templates/news/category_detail.html:63
+#: templates/news/category_detail.html:64
 msgid "No news available in this category yet."
 msgstr "В этой категории пока нет новостей."
 
-#: templates/news/delete.html:4 templates/news/detail.html:241
+#: templates/news/delete.html:4 templates/news/detail.html:114
 msgid "Delete News"
 msgstr "Удалить новость"
 
@@ -335,38 +342,46 @@ msgstr "Это действие нельзя отменить."
 msgid "Delete"
 msgstr "Удалить"
 
-#: templates/news/detail.html:84
-msgid "Comments"
-msgstr "Комментарии"
-
-#: templates/news/detail.html:143
-msgid "No comments yet."
-msgstr "Комментариев пока нет."
-
-#: templates/news/detail.html:160
-msgid "Leave a comment"
-msgstr "Оставить комментарий"
-
-#: templates/news/detail.html:186
-msgid "Comment"
-msgstr "Комментировать"
-
-#: templates/news/detail.html:195
-msgid "You need to"
-msgstr "Вам необходимо"
-
-#: templates/news/detail.html:201
-msgid "login"
-msgstr "войти"
-
-#: templates/news/detail.html:204
-msgid "to leave a comment."
-msgstr "чтобы оставить комментарий."
-
-#: templates/news/detail.html:228 templates/news/news_update.html:4
+#: templates/news/detail.html:104 templates/news/news_update.html:4
 #: templates/news/news_update.html:20
 msgid "Update News"
 msgstr "Обновить новость"
+
+#: templates/news/detail.html:251
+msgid "No comments yet."
+msgstr "Комментариев пока нет."
+
+#: templates/news/detail.html:256
+msgid "Be the first to leave a comment."
+msgstr "Будьте первым, кто оставит комментарий."
+
+#: templates/news/detail.html:279
+msgid "Leave a comment"
+msgstr "Оставить комментарий"
+
+#: templates/news/detail.html:310
+msgid "Your comment"
+msgstr "Ваш комментарий"
+
+#: templates/news/detail.html:342
+msgid "Comment"
+msgstr "Комментарий"
+
+#: templates/news/detail.html:364
+msgid "Want to leave a comment?"
+msgstr "Хотите оставить комментарий?"
+
+#: templates/news/detail.html:370
+msgid "You need to"
+msgstr "Вам необходимо"
+
+#: templates/news/detail.html:376
+msgid "login"
+msgstr "войти"
+
+#: templates/news/detail.html:379
+msgid "to leave a comment."
+msgstr "чтобы оставить комментарий."
 
 #: templates/news/news_create.html:4 templates/news/news_create.html:21
 #: templates/news/news_create.html:96
@@ -444,6 +459,149 @@ msgstr ""
 #: templates/registration/login.html:81
 msgid "Don't have an account?"
 msgstr "У вас нет аккаунта?"
+
+#: templates/registration/login.html:88
+msgid "Did you forget your password?"
+msgstr "Забыли пароль?"
+
+#: templates/registration/password_reset_complete.html:39
+msgid "Password changed successfully!"
+msgstr "Пароль успешно изменён!"
+
+#: templates/registration/password_reset_complete.html:46
+msgid "You can now log in to your account using your new password."
+msgstr "Теперь вы можете войти в свою учётную запись, используя новый пароль."
+
+#: templates/registration/password_reset_complete.html:55
+msgid "Your account is secure."
+msgstr "Ваша учётная запись защищена."
+
+#: templates/registration/password_reset_complete.html:61
+msgid "Your old password can no longer be used to log in."
+msgstr "Ваш старый пароль больше нельзя использовать для входа."
+
+#: templates/registration/password_reset_complete.html:72
+msgid "Go to Login"
+msgstr "Перейти ко входу"
+
+#: templates/registration/password_reset_complete.html:83
+msgid "Back to homepage"
+msgstr "Вернуться на главную"
+
+#: templates/registration/password_reset_confirm.html:5
+msgid "Set New Password"
+msgstr "Установить новый пароль"
+
+#: templates/registration/password_reset_confirm.html:41
+msgid "Set a new password"
+msgstr "Установите новый пароль"
+
+#: templates/registration/password_reset_confirm.html:47
+msgid "Enter your new password below."
+msgstr "Введите новый пароль ниже."
+
+#: templates/registration/password_reset_confirm.html:113
+msgid "Change password"
+msgstr "Изменить пароль"
+
+#: templates/registration/password_reset_confirm.html:128
+msgid "This password reset link is invalid or has already been used."
+msgstr "Эта ссылка для сброса пароля недействительна или уже была использована."
+
+#: templates/registration/password_reset_confirm.html:137
+msgid "Request a new link"
+msgstr "Запросить новую ссылку"
+
+#: templates/registration/password_reset_confirm.html:153
+#: templates/registration/password_reset_form.html:70
+msgid "Back to login"
+msgstr "Вернуться ко входу"
+
+#: templates/registration/password_reset_done.html:5
+msgid "Password Reset Sent"
+msgstr "Ссылка для сброса пароля отправлена"
+
+#: templates/registration/password_reset_done.html:31
+msgid "Check your email"
+msgstr "Проверьте свою электронную почту"
+
+#: templates/registration/password_reset_done.html:36
+msgid "We've emailed you instructions for setting your password."
+msgstr "Мы отправили вам на электронную почту инструкции по установке нового пароля."
+
+#: templates/registration/password_reset_done.html:37
+msgid ""
+"If an account exists with the email address you entered, you will receive "
+"the password reset link shortly."
+msgstr "Если учётная запись с указанным адресом электронной почты существует, вы получите ссылку для сброса пароля в ближайшее время."
+
+#: templates/registration/password_reset_done.html:47
+msgid "Didn't receive the email?"
+msgstr "Не получили письмо?"
+
+#: templates/registration/password_reset_done.html:51
+msgid ""
+"Check your spam or junk folder and make sure you entered the correct email "
+"address."
+msgstr "Проверьте папку «Спам» и убедитесь, что вы указали правильный адрес электронной почты."
+
+#: templates/registration/password_reset_done.html:63
+msgid "Back to Login"
+msgstr "Вернуться ко входу"
+
+#: templates/registration/password_reset_done.html:71
+msgid "Need help? Contact our support team."
+msgstr "Нужна помощь? Обратитесь в нашу службу поддержки."
+
+#: templates/registration/password_reset_email.html:7
+#: templates/registration/password_reset_email.html:21
+msgid "Password Reset"
+msgstr "Сброс пароля"
+
+#: templates/registration/password_reset_email.html:25
+msgid "Hello"
+msgstr "Здравствуйте!"
+
+#: templates/registration/password_reset_email.html:29
+msgid "We received a request to reset your password."
+msgstr "Мы получили запрос на сброс вашего пароля."
+
+#: templates/registration/password_reset_email.html:33
+msgid "Click the button below to create a new password."
+msgstr "Нажмите кнопку ниже, чтобы создать новый пароль."
+
+#: templates/registration/password_reset_email.html:47
+msgid "Reset Password"
+msgstr "Сбросить пароль"
+
+#: templates/registration/password_reset_email.html:51
+msgid "If you did not request this, you can safely ignore this email."
+msgstr "Если вы не запрашивали сброс пароля, можете спокойно проигнорировать это письмо."
+
+#: templates/registration/password_reset_form.html:6
+msgid "Forgot password"
+msgstr "Забыли пароль"
+
+#: templates/registration/password_reset_form.html:30
+msgid "Forgot password?"
+msgstr "Забыли пароль?"
+
+#: templates/registration/password_reset_form.html:35
+msgid ""
+"Enter your email address and we will send you a link to reset your password."
+msgstr "Введите свой адрес электронной почты, и мы отправим вам ссылку для сброса пароля."
+
+#: templates/registration/password_reset_form.html:45
+msgid "Email address"
+msgstr "Адрес электронной почты"
+
+#: templates/registration/password_reset_form.html:61
+msgid "Send reset link"
+msgstr "Отправить ссылку для сброса"
+
+#: templates/registration/password_reset_subject.txt:1
+msgid "Password Reset - NewsDjangoWebsite"
+msgstr "Сброс пароля — NewsDjangoWebsite"
 
 #: templates/registration/signup.html:5
 msgid "Sign Up"

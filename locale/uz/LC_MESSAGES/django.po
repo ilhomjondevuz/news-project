@@ -2,15 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: NewsDjangoWebsite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-25 12:06+0500\n"
-"PO-Revision-Date: 2026-08-25 12:00+0500\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2026-08-28 08:35+0500\n"
+"PO-Revision-Date: 2026-08-28 08:45+0500\n"
+"Last-Translator: Ilhomjon\n"
 "Language-Team: Uzbek\n"
 "Language: uz\n"
 "MIME-Version: 1.0\n"
@@ -66,55 +65,67 @@ msgstr "Parolni tasdiqlang"
 msgid "Role"
 msgstr "Rol"
 
-#: apps/accounts/views.py:24
+#: apps/accounts/views.py:23
 msgid "Registration successful."
 msgstr "Ro‘yxatdan muvaffaqiyatli o‘tdingiz."
 
-#: apps/accounts/views.py:32
+#: apps/accounts/views.py:31
 msgid "Login successful."
 msgstr "Tizimga muvaffaqiyatli kirdingiz."
 
-#: apps/accounts/views.py:43
+#: apps/accounts/views.py:42
 msgid "Username or password is incorrect."
 msgstr "Foydalanuvchi nomi yoki parol noto‘g‘ri."
 
-#: apps/accounts/views.py:45
+#: apps/accounts/views.py:44
 msgid "Your account is inactive."
 msgstr "Hisobingiz faol emas."
 
-#: apps/accounts/views.py:51
+#: apps/accounts/views.py:50
 msgid "Please correct the error below."
 msgstr "Quyidagi xatoni tuzating."
 
-#: apps/news/models.py:12
+#: apps/news/forms.py:24
+msgid "Write your comment..."
+msgstr "Izohingizni yozing..."
+
+#: apps/news/models.py:14
 msgid "Draft"
 msgstr "Qoralama"
 
-#: apps/news/models.py:13
+#: apps/news/models.py:15
 msgid "Published"
 msgstr "E’lon qilingan"
 
-#: apps/news/models.py:60 apps/news/models.py:61 templates/base.html:180
+#: apps/news/models.py:63 apps/news/models.py:64 templates/base.html:111
 msgid "News"
 msgstr "Yangiliklar"
 
-#: apps/news/models.py:89
+#: apps/news/models.py:92
 msgid "Category"
 msgstr "Kategoriya"
 
-#: apps/news/models.py:90 templates/base.html:196 templates/base.html:399
+#: apps/news/models.py:93 templates/base.html:127 templates/base.html:327
 msgid "Categories"
 msgstr "Kategoriyalar"
 
-#: apps/news/models.py:111
+#: apps/news/models.py:114
 msgid "Contact "
 msgstr "Aloqa"
 
-#: apps/news/models.py:112
+#: apps/news/models.py:115
 msgid "Contacts"
 msgstr "Aloqalar"
 
-#: core/settings.py:132 templates/base.html:73 templates/base.html:118
+#: apps/news/models.py:136
+msgid "Comment "
+msgstr "Izoh"
+
+#: apps/news/models.py:137 templates/news/detail.html:135
+msgid "Comments"
+msgstr "Izohlar"
+
+#: core/settings.py:132
 msgid "English"
 msgstr "Ingliz tili"
 
@@ -138,10 +149,12 @@ msgid "Current password"
 msgstr "Joriy parol"
 
 #: templates/accounts/password_change.html:50
+#: templates/registration/password_reset_confirm.html:64
 msgid "New password"
 msgstr "Yangi parol"
 
 #: templates/accounts/password_change.html:67
+#: templates/registration/password_reset_confirm.html:85
 msgid "Confirm new password"
 msgstr "Yangi parolni tasdiqlang"
 
@@ -150,10 +163,12 @@ msgid "Password Changed"
 msgstr "Parol o‘zgartirildi"
 
 #: templates/accounts/password_change_done.html:22
+#: templates/registration/password_reset_complete.html:5
 msgid "Password Changed Successfully"
 msgstr "Parol muvaffaqiyatli o‘zgartirildi"
 
 #: templates/accounts/password_change_done.html:26
+#: templates/registration/password_reset_complete.html:45
 msgid "Your password has been changed successfully."
 msgstr "Parolingiz muvaffaqiyatli o‘zgartirildi."
 
@@ -217,59 +232,51 @@ msgstr "Bekor qilish"
 msgid "Save Changes"
 msgstr "O‘zgarishlarni saqlash"
 
-#: templates/base.html:11 templates/home.html:5
+#: templates/base.html:14 templates/home.html:5
 msgid "Homepage"
 msgstr "Bosh sahifa"
 
-#: templates/base.html:68 templates/base.html:100
-msgid "O‘zbekcha"
-msgstr "O‘zbekcha"
-
-#: templates/base.html:78 templates/base.html:136
-msgid "Русский"
-msgstr "Ruscha"
-
-#: templates/base.html:159
+#: templates/base.html:83
 msgid "Toggle navigation"
 msgstr "Navigatsiyani ochish/yopish"
 
-#: templates/base.html:226
+#: templates/base.html:157
 msgid "No categories"
 msgstr "Kategoriyalar mavjud emas"
 
-#: templates/base.html:246
+#: templates/base.html:177
 msgid "Contact"
 msgstr "Aloqa"
 
-#: templates/base.html:277
+#: templates/base.html:207
 msgid "News create"
 msgstr "Yangilik yaratish"
 
-#: templates/base.html:291 templates/registration/logged_out.html:4
+#: templates/base.html:221 templates/registration/logged_out.html:4
 #: templates/registration/logged_out.html:45
 #: templates/registration/logout.html:4 templates/registration/logout.html:45
 msgid "Logout"
 msgstr "Chiqish"
 
-#: templates/base.html:308 templates/registration/login.html:5
+#: templates/base.html:236 templates/registration/login.html:5
 #: templates/registration/login.html:18 templates/registration/login.html:76
 #: templates/registration/signup.html:236
 msgid "Login"
 msgstr "Kirish"
 
-#: templates/base.html:322 templates/registration/login.html:84
+#: templates/base.html:250 templates/registration/login.html:84
 msgid "Register"
 msgstr "Ro‘yxatdan o‘tish"
 
-#: templates/base.html:357
+#: templates/base.html:287
 msgid "Close"
 msgstr "Yopish"
 
-#: templates/base.html:434
+#: templates/base.html:358
 msgid "No categories available"
 msgstr "Kategoriyalar mavjud emas"
 
-#: templates/base.html:464
+#: templates/base.html:389
 msgid "All rights reserved."
 msgstr "Barcha huquqlar himoyalangan."
 
@@ -277,7 +284,7 @@ msgstr "Barcha huquqlar himoyalangan."
 msgid "Latest News"
 msgstr "So‘nggi yangiliklar"
 
-#: templates/home.html:40 templates/news/category_detail.html:44
+#: templates/home.html:40 templates/news/category_detail.html:45
 msgid "Read more"
 msgstr "Batafsil o‘qish"
 
@@ -301,19 +308,19 @@ msgstr "Yangiliklar mavjud emas"
 msgid "Follow Us"
 msgstr "Bizni kuzatib boring"
 
-#: templates/news/category_detail.html:13
+#: templates/news/category_detail.html:14
 msgid "News in"
 msgstr "Yangiliklar"
 
-#: templates/news/category_detail.html:13
+#: templates/news/category_detail.html:14
 msgid "category"
 msgstr "kategoriyasida"
 
-#: templates/news/category_detail.html:63
+#: templates/news/category_detail.html:64
 msgid "No news available in this category yet."
 msgstr "Bu kategoriyada hozircha yangiliklar mavjud emas."
 
-#: templates/news/delete.html:4 templates/news/detail.html:241
+#: templates/news/delete.html:4 templates/news/detail.html:114
 msgid "Delete News"
 msgstr "Yangilikni o‘chirish"
 
@@ -333,38 +340,46 @@ msgstr "Bu amalni bekor qilib bo‘lmaydi."
 msgid "Delete"
 msgstr "O‘chirish"
 
-#: templates/news/detail.html:84
-msgid "Comments"
-msgstr "Izohlar"
-
-#: templates/news/detail.html:143
-msgid "No comments yet."
-msgstr "Hozircha izohlar yo‘q."
-
-#: templates/news/detail.html:160
-msgid "Leave a comment"
-msgstr "Izoh qoldiring"
-
-#: templates/news/detail.html:186
-msgid "Comment"
-msgstr "Izoh"
-
-#: templates/news/detail.html:195
-msgid "You need to"
-msgstr "Siz"
-
-#: templates/news/detail.html:201
-msgid "login"
-msgstr "tizimga kirishingiz"
-
-#: templates/news/detail.html:204
-msgid "to leave a comment."
-msgstr "kerak."
-
-#: templates/news/detail.html:228 templates/news/news_update.html:4
+#: templates/news/detail.html:104 templates/news/news_update.html:4
 #: templates/news/news_update.html:20
 msgid "Update News"
 msgstr "Yangilikni yangilash"
+
+#: templates/news/detail.html:251
+msgid "No comments yet."
+msgstr "Hozircha izohlar yo‘q."
+
+#: templates/news/detail.html:256
+msgid "Be the first to leave a comment."
+msgstr "Birinchi bo‘lib izoh qoldiring."
+
+#: templates/news/detail.html:279
+msgid "Leave a comment"
+msgstr "Izoh qoldiring"
+
+#: templates/news/detail.html:310
+msgid "Your comment"
+msgstr "Izohingiz"
+
+#: templates/news/detail.html:342
+msgid "Comment"
+msgstr "Izoh"
+
+#: templates/news/detail.html:364
+msgid "Want to leave a comment?"
+msgstr "Izoh qoldirmoqchimisiz?"
+
+#: templates/news/detail.html:370
+msgid "You need to"
+msgstr "Siz"
+
+#: templates/news/detail.html:376
+msgid "login"
+msgstr "tizimga kirishingiz"
+
+#: templates/news/detail.html:379
+msgid "to leave a comment."
+msgstr "izoh qoldirish uchun kerak."
 
 #: templates/news/news_create.html:4 templates/news/news_create.html:21
 #: templates/news/news_create.html:96
@@ -436,12 +451,154 @@ msgstr "Haqiqatan ham tizimdan chiqmoqchimisiz?"
 #: templates/registration/logout.html:32
 msgid ""
 "You will be logged out from your account and redirected to the login page."
-msgstr ""
-"Siz hisobingizdan chiqarilasiz va kirish sahifasiga yo‘naltirilasiz."
+msgstr "Siz hisobingizdan chiqarilasiz va kirish sahifasiga yo‘naltirilasiz."
 
 #: templates/registration/login.html:81
 msgid "Don't have an account?"
 msgstr "Hisobingiz yo‘qmi?"
+
+#: templates/registration/login.html:88
+msgid "Did you forget your password?"
+msgstr "Parolingizni unutdingizmi?"
+
+#: templates/registration/password_reset_complete.html:39
+msgid "Password changed successfully!"
+msgstr "Parol muvaffaqiyatli o‘zgartirildi!"
+
+#: templates/registration/password_reset_complete.html:46
+msgid "You can now log in to your account using your new password."
+msgstr "Endi yangi parolingiz yordamida hisobingizga kirishingiz mumkin."
+
+#: templates/registration/password_reset_complete.html:55
+msgid "Your account is secure."
+msgstr "Hisobingiz xavfsiz."
+
+#: templates/registration/password_reset_complete.html:61
+msgid "Your old password can no longer be used to log in."
+msgstr "Eski parolingiz endi tizimga kirish uchun ishlatilmaydi."
+
+#: templates/registration/password_reset_complete.html:72
+msgid "Go to Login"
+msgstr "Kirish sahifasiga o‘tish"
+
+#: templates/registration/password_reset_complete.html:83
+msgid "Back to homepage"
+msgstr "Bosh sahifaga qaytish"
+
+#: templates/registration/password_reset_confirm.html:5
+msgid "Set New Password"
+msgstr "Yangi parol o‘rnatish"
+
+#: templates/registration/password_reset_confirm.html:41
+msgid "Set a new password"
+msgstr "Yangi parol o‘rnating"
+
+#: templates/registration/password_reset_confirm.html:47
+msgid "Enter your new password below."
+msgstr "Quyida yangi parolingizni kiriting."
+
+#: templates/registration/password_reset_confirm.html:113
+msgid "Change password"
+msgstr "Parolni o‘zgartirish"
+
+#: templates/registration/password_reset_confirm.html:128
+msgid "This password reset link is invalid or has already been used."
+msgstr "Parolni tiklash havolasi yaroqsiz yoki undan allaqachon foydalanilgan."
+
+#: templates/registration/password_reset_confirm.html:137
+msgid "Request a new link"
+msgstr "Yangi havola so‘rash"
+
+#: templates/registration/password_reset_confirm.html:153
+#: templates/registration/password_reset_form.html:70
+msgid "Back to login"
+msgstr "Kirish sahifasiga qaytish"
+
+#: templates/registration/password_reset_done.html:5
+msgid "Password Reset Sent"
+msgstr "Parolni tiklash havolasi yuborildi"
+
+#: templates/registration/password_reset_done.html:31
+msgid "Check your email"
+msgstr "Elektron pochtangizni tekshiring"
+
+#: templates/registration/password_reset_done.html:36
+msgid "We've emailed you instructions for setting your password."
+msgstr "Parolni o‘rnatish bo‘yicha ko‘rsatmalar elektron pochtangizga yuborildi."
+
+#: templates/registration/password_reset_done.html:37
+msgid ""
+"If an account exists with the email address you entered, you will receive "
+"the password reset link shortly."
+msgstr "Agar kiritgan elektron pochta manzilingizga tegishli hisob mavjud bo‘lsa, tez orada parolni tiklash havolasini olasiz."
+
+#: templates/registration/password_reset_done.html:47
+msgid "Didn't receive the email?"
+msgstr "Xatni olmadingizmi?"
+
+#: templates/registration/password_reset_done.html:51
+msgid ""
+"Check your spam or junk folder and make sure you entered the correct email "
+"address."
+msgstr "Spam yoki keraksiz xatlar papkasini tekshiring va elektron pochta manzilingizni to‘g‘ri kiritganingizga ishonch hosil qiling."
+
+#: templates/registration/password_reset_done.html:63
+msgid "Back to Login"
+msgstr "Kirish sahifasiga qaytish"
+
+#: templates/registration/password_reset_done.html:71
+msgid "Need help? Contact our support team."
+msgstr "Yordam kerakmi? Qo‘llab-quvvatlash xizmatimizga murojaat qiling."
+
+#: templates/registration/password_reset_email.html:7
+#: templates/registration/password_reset_email.html:21
+msgid "Password Reset"
+msgstr "Parolni tiklash"
+
+#: templates/registration/password_reset_email.html:25
+msgid "Hello"
+msgstr "Salom!"
+
+#: templates/registration/password_reset_email.html:29
+msgid "We received a request to reset your password."
+msgstr "Parolingizni tiklash haqida so‘rov oldik."
+
+#: templates/registration/password_reset_email.html:33
+msgid "Click the button below to create a new password."
+msgstr "Yangi parol yaratish uchun quyidagi tugmani bosing."
+
+#: templates/registration/password_reset_email.html:47
+msgid "Reset Password"
+msgstr "Parolni tiklash"
+
+#: templates/registration/password_reset_email.html:51
+msgid "If you did not request this, you can safely ignore this email."
+msgstr "Agar bu so‘rovni siz yubormagan bo‘lsangiz, ushbu xatni e’tiborsiz qoldirishingiz mumkin."
+
+#: templates/registration/password_reset_form.html:6
+msgid "Forgot password"
+msgstr "Parolni unutdingiz"
+
+#: templates/registration/password_reset_form.html:30
+msgid "Forgot password?"
+msgstr "Parolingizni unutdingizmi?"
+
+#: templates/registration/password_reset_form.html:35
+msgid ""
+"Enter your email address and we will send you a link to reset your password."
+msgstr "Elektron pochta manzilingizni kiriting va biz sizga parolni tiklash havolasini yuboramiz."
+
+#: templates/registration/password_reset_form.html:45
+msgid "Email address"
+msgstr "Elektron pochta manzili"
+
+#: templates/registration/password_reset_form.html:61
+msgid "Send reset link"
+msgstr "Tiklash havolasini yuborish"
+
+#: templates/registration/password_reset_subject.txt:1
+msgid "Password Reset - NewsDjangoWebsite"
+msgstr "Parolni tiklash — NewsDjangoWebsite"
 
 #: templates/registration/signup.html:5
 msgid "Sign Up"
@@ -461,4 +618,4 @@ msgstr "Profil rasmingizni tanlang."
 
 #: templates/registration/signup.html:229
 msgid "Already have an account?"
-msgstr "Hisobingiz allaqachon bormi?"
+msgstr "Hisobingiz bormi?"
