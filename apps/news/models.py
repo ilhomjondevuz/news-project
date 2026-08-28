@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
@@ -7,6 +8,7 @@ from django.utils.translation import gettext_lazy as _
 from .managers import PublishedManager
 
 
+User = get_user_model()
 class Newness(models.Model):
     class Status(models.TextChoices):
         DRAFT = "DF", _("Draft")
@@ -111,3 +113,25 @@ class Contact(models.Model):
         db_table = "contacts"
         verbose_name = _("Contact ")
         verbose_name_plural = _("Contacts")
+
+class Comment(models.Model):
+    newness = models.ForeignKey(Newness, on_delete=models.CASCADE, related_name="comments")
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="comments")
+    comment = models.TextField()
+    slug = models.SlugField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"{self.author}" + " " + self.newness.title
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.comment)
+        super(Comment, self).save(*args, **kwargs)
+
+    class Meta:
+        ordering = ["-created_at"]
+        db_table = "comments"
+        verbose_name = _("Comment ")
+        verbose_name_plural = _("Comments")

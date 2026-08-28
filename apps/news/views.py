@@ -1,12 +1,12 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import render, get_object_or_404, redirect
-from django.urls import reverse_lazy
+
 from django.views import generic
 from hitcount.views import HitCountDetailView
 
-from .forms import ContactForm, NewnessForm
-from .models import Newness, Category
+from .forms import ContactForm, NewnessForm, CommentForm
+from .models import Newness, Category, Comment
 
 
 def news_list_view(request):
@@ -26,6 +26,33 @@ class NewnessCountHitDetailView(HitCountDetailView):
     template_name = 'news/detail.html'
     context_object_name = 'newness'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['comments'] = Comment.objects.filter(newness=self.object)
+        context['comment_form'] = CommentForm()
+
+        return context
+
+    def post(self, request, **kwargs):
+        self.object = self.get_object()
+
+        comment_form = CommentForm(request.POST)
+
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
+            comment.author = request.user
+            comment.newness = self.object
+            comment.save()
+
+            return redirect(
+                'news_detail',
+                slug=self.object.slug
+            )
+
+        context = self.get_context_data(**kwargs)
+        context['comment_form'] = comment_form
+
+        return self.render_to_response(context)
 
 class NewnessDeleteView(
     LoginRequiredMixin,
@@ -66,14 +93,14 @@ class ContactView(generic.TemplateView):
         form = ContactForm()
         return render(request, self.template_name, {'form': form})
 
-    def post(self, request, *args, **kwargs):
+    def post(self, request):
         form = ContactForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, "✅ Xabaringiz muvaffaqiyatli yuborildi!")
+            messages.success(request, "✅ Your message has been sent successfully.!")
             return redirect('contact')
         else:
-            messages.error(request, "❌ Xabar yuborishda xatolik yuz berdi.")
+            messages.error(request, "❌ There was an error sending the message..")
         return render(request, self.template_name, {'form': form})
 
 
