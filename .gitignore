@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+.venv/
+env/
+
+# Django
+*.log
+db.sqlite3
+db.sqlite3-journal
+media/
+mediafiles/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Static files
+staticfiles/
+collected_static/
+
+# IDE
+.idea/
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test and coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Migrations
+# Django migrations odatda GitHub'ga yuklanadi.
+# Shuning uchun ularni ignore qilmaymiz.
