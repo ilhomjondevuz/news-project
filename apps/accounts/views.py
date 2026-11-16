@@ -1,3 +1,9 @@
-from django.shortcuts import render
+from django.views.generic import CreateView
 
-# Create your views here.
+from .forms import RegistrationForm
+
+
+class RegisterView(CreateView):
+    form_class = RegistrationForm
+    template_name = 'registration/register.html'
+    success_url = '/accounts/login/'
