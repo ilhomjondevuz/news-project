@@ -33,6 +33,10 @@ NewsCHOOCES = (
     ('HD', 'HIDDEN')
 )
 
+class PublishedManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(status='PB')
+
 class News(models.Model):
     title = models.CharField(max_length=100)
     slug = models.SlugField(max_length=100, unique=True)
@@ -42,6 +46,9 @@ class News(models.Model):
     status = models.CharField(max_length=2, choices=NewsCHOOCES, default='DF')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    objects = models.Manager()
+    published = PublishedManager()
 
     def save(self, *args, **kwargs):
         if not self.slug:
