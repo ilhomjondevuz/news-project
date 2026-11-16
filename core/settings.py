@@ -33,7 +33,8 @@ INSTALLED_APPS = [
     # global packages
 
     # local apps
-    'newsApp.apps.NewsappConfig',
+    'apps.newsApp.apps.NewsappConfig',
+    'apps.accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [

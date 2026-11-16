@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from newsApp.models import Category
+from .models import Category
 
 
 def home_view(request):
