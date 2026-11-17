@@ -1,6 +1,6 @@
 import re
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.core.exceptions import ValidationError
 from django.utils import timezone
 
@@ -153,3 +153,23 @@ class LoginForm(forms.Form):
             }
         )
     )
+
+class CustomUserChangeForm(UserChangeForm):
+    birthdate = forms.DateField(
+        required=False,
+        widget=forms.DateInput(attrs={
+            'type': 'date',
+            'class': 'form-control',
+        }),
+        input_formats=['%Y-%m-%d']
+    )
+
+    class Meta:
+        model = Account
+        fields = (
+            'username',
+            'email',
+            'first_name',
+            'last_name',
+            'birthdate',
+        )

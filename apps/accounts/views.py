@@ -1,10 +1,12 @@
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.views import LoginView, PasswordResetView
 from django.contrib.auth import logout
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import CreateView, UpdateView
 
-from .forms import RegistrationForm, LoginForm
+from .forms import RegistrationForm, LoginForm, CustomUserChangeForm
+from .models import Account
 
 
 class RegisterView(CreateView):
@@ -23,3 +25,12 @@ class CustomLoginView(LoginView):
 def logout_view(request):
     logout(request)
     return redirect(request.META.get('HTTP_REFERER'), 'news:home')
+
+class CustomUserChangeView(LoginRequiredMixin, UpdateView):
+    model = Account
+    form_class = CustomUserChangeForm
+    template_name = 'registration/profile_edit.html'
+    success_url = reverse_lazy('accounts:profile')
+
+    def get_object(self, queryset=None):
+        return self.request.user
