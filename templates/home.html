@@ -1,0 +1,270 @@
+{% extends 'base.html' %}
+
+{% block title %}Bosh sahifa | NewsApp{% endblock title %}
+
+{% block extra_css %}
+<style>
+    body {
+        background: #f5f7fa;
+    }
+
+    .news-hero {
+        background: linear-gradient(120deg, #102a43, #087e9b);
+        color: white;
+        padding: 65px 0;
+        border-radius: 0 0 25px 25px;
+        margin-bottom: 45px;
+    }
+
+    .news-hero h1 {
+        font-size: clamp(30px, 5vw, 48px);
+        font-weight: 800;
+        line-height: 1.3;
+    }
+
+    .news-hero p {
+        color: #dcecf2;
+        max-width: 600px;
+        font-size: 17px;
+    }
+
+    .section-title {
+        font-weight: 800;
+        color: #172b4d;
+        margin-bottom: 25px;
+    }
+
+    .news-card {
+        border: none;
+        border-radius: 16px;
+        overflow: hidden;
+        background: white;
+        height: 100%;
+        box-shadow: 0 5px 20px rgba(0,0,0,.05);
+        transition: .25s ease;
+    }
+
+    .news-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 30px rgba(0,0,0,.10);
+    }
+
+    .news-image {
+        height: 210px;
+        width: 100%;
+        object-fit: cover;
+        background: #e9ecef;
+    }
+
+    .news-image-placeholder {
+        height: 210px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #dceef5, #e8f0fe);
+        color: #087e9b;
+        font-size: 45px;
+    }
+
+    .news-category {
+        display: inline-block;
+        background: #e0f7fa;
+        color: #087e9b;
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 700;
+    }
+
+    .news-card h5 {
+        font-weight: 750;
+        color: #172b4d;
+        line-height: 1.5;
+    }
+
+    .news-description {
+        color: #6c757d;
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .news-meta {
+        color: #8993a4;
+        font-size: 12px;
+    }
+
+    .read-more {
+        color: #087e9b;
+        font-weight: 700;
+        text-decoration: none;
+    }
+
+    .read-more:hover {
+        color: #0dcaf0;
+    }
+
+    .empty-news {
+        background: white;
+        border-radius: 16px;
+        padding: 55px 20px;
+        text-align: center;
+        color: #6c757d;
+    }
+
+    .empty-news-icon {
+        font-size: 45px;
+        margin-bottom: 15px;
+    }
+
+    .newsletter {
+        background: #e5f7fa;
+        border-radius: 18px;
+        padding: 35px;
+        margin: 55px 0;
+        text-align: center;
+    }
+
+    @media (max-width: 576px) {
+        .news-hero {
+            padding: 45px 20px;
+        }
+
+        .register-card {
+            padding: 22px;
+        }
+
+        .newsletter {
+            padding: 25px 15px;
+        }
+    }
+</style>
+{% endblock extra_css %}
+
+
+{% block content %}
+
+<!-- HERO SECTION -->
+<section class="news-hero">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <span class="badge bg-info text-dark mb-3">
+                    NEWSAPP — ISHONCHLI AXBOROT
+                </span>
+
+                <h1>
+                    Dunyo yangiliklaridan<br>
+                    doimo xabardor bo'ling!
+                </h1>
+
+                <p class="mt-3">
+                    Eng so'nggi yangiliklar, qiziqarli maqolalar
+                    va muhim voqealarni biz bilan kuzatib boring.
+                </p>
+
+                <a href="#latest-news" class="btn btn-info fw-bold px-4 py-2 mt-2">
+                    Yangiliklarni ko'rish →
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- LATEST NEWS -->
+<section class="container mb-5" id="latest-news">
+
+    <div class="d-flex justify-content-between align-items-center flex-wrap mb-4">
+        <div>
+            <span class="text-info fw-bold small">SO'NGGI XABARLAR</span>
+            <h2 class="section-title mb-0">So'nggi yangiliklar</h2>
+        </div>
+    </div>
+
+    <div class="row g-4">
+
+        {% for news in news_list %}
+
+            <div class="col-md-6 col-lg-4">
+
+                <article class="card news-card">
+
+                    {% if news.image %}
+                        <img src="{{ news.image.url }}"
+                             class="news-image"
+                             alt="{{ news.title }}">
+                    {% else %}
+                        <div class="news-image-placeholder">
+                            ✦
+                        </div>
+                    {% endif %}
+
+                    <div class="card-body p-4">
+
+                        <div class="mb-3">
+                            <span class="news-category">
+                                {{ news.category }}
+                            </span>
+                        </div>
+
+                        <h5>{{ news.title }}</h5>
+
+                        <p class="news-description mt-3">
+                            {{ news.body|truncatewords:20 }}
+                        </p>
+
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+
+                            <span class="news-meta">
+                                {{ news.created_at|date:"d.m.Y" }}
+                            </span>
+
+                            <a href="{% url 'news:detail' news.pk %}"
+                               class="read-more">
+                                Batafsil →
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        {% empty %}
+
+            <div class="col-12">
+                <div class="empty-news">
+                    <div class="empty-news-icon">📰</div>
+
+                    <h4 class="fw-bold">Hozircha yangiliklar yo'q</h4>
+
+                    <p class="mb-0">
+                        Tez orada bu yerda yangi maqolalar paydo bo'ladi.
+                    </p>
+                </div>
+            </div>
+
+        {% endfor %}
+
+    </div>
+</section>
+
+
+<!-- NEWSLETTER -->
+<section class="container">
+    <div class="newsletter">
+
+        <h3 class="fw-bold text-dark">
+            Yangiliklardan xabardor bo'ling!
+        </h3>
+
+        <p class="text-secondary mb-0">
+            NewsApp bilan muhim voqealarni o'tkazib yubormang.
+        </p>
+
+    </div>
+</section>
+
+{% endblock content %}
